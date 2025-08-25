@@ -1,5 +1,5 @@
 "use client"
-import { HOME_BANNER, HOME_SERVICES, HOME_DOCTORS, HOME_STATS, HOME_CHOOSE, HOME_BLOGS, HOME_SPEC, HOME_ABOUT, HOME_FAQ, CEO_MESSAGE } from "@/constants/resources";
+import { HOME_BANNER, HOME_SERVICES, HOME_DOCTORS, HOME_STATS, HOME_CHOOSE, HOME_BLOGS, HOME_SPEC, HOME_ABOUT, HOME_FAQ, CEO_MESSAGE, PACKAGES, PACKAGE_DETAIL } from "@/constants/resources";
 import DefaultComponent from "./DefaultComponent";
 import HomeBanner from "@/widgets/HomeBanner";
 import HomeServices from "@/widgets/HomeServices";
@@ -11,6 +11,8 @@ import HomeSpec from "@/widgets/HomeSpec";
 import HomeAbout from "@/widgets/HomeAbout";
 import HomeFaq from "@/widgets/HomeFaq";
 import CeoMessage from "@/widgets/CeoMessage";
+import Packages from "@/widgets/Packages";
+import PackageDetail from "@/widgets/PackageDetail";
 
 
 
@@ -26,6 +28,8 @@ const setComponent = (widget) => {
     [HOME_ABOUT]: HomeAbout,
     [HOME_FAQ]: HomeFaq,
     [CEO_MESSAGE]: CeoMessage,
+    [PACKAGES]: Packages,
+    [PACKAGE_DETAIL]: PackageDetail,
     default: DefaultComponent,
   };
   return components[widget.__component] || components["default"];

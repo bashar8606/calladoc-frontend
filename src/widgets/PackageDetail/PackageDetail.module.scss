@@ -1,0 +1,63 @@
+.container {
+  .package-detail-widget {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  }
+
+  .prose {
+    h1, h2, h3, h4, h5, h6 {
+      color: #1f2937;
+      font-weight: 600;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+    }
+
+    p {
+      margin-bottom: 1em;
+      line-height: 1.7;
+    }
+
+    ul, ol {
+      margin-bottom: 1em;
+      padding-left: 1.5em;
+    }
+
+    li {
+      margin-bottom: 0.5em;
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: 1024px) {
+    .package-detail-widget {
+      padding: 50px 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .package-detail-widget {
+      padding: 40px 0;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+    }
+    
+    .grid {
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .package-detail-widget {
+      padding: 30px 0;
+    }
+    
+    h1 {
+      font-size: 2rem;
+    }
+    
+    .flex-col {
+      gap: 0.75rem;
+    }
+  }
+}

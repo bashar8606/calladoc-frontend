@@ -19,3 +19,7 @@ export const ISSUE_SINGLE = "/api/issues"
 export const ISSUES_PAGE = "/api/issues-page?populate=widgets.cover,widgets.items.cover,seo"
 export const MEDIA_PAGE = "/api/media-page?populate=widgets.cover,widgets.items.cover,widgets.popular.cover,widgets.latest.cover,seo"
 export const MEDIA_SINGLE = "/api/articles"
+
+// Packages
+export const PACKAGES_PAGE = "/api/packages-page?populate=widgets.cover,widgets.items.cover,seo";
+export const PACKAGE_SINGLE = "/api/packages";
