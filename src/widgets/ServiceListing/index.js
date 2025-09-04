@@ -19,7 +19,7 @@ export default function ServiceListing({ data }) {
             return (
               <div className="" key={i}>
                 <MedicalCard data={item} /> 
-              </div>
+              </div> 
             )
           })}
         </div>
