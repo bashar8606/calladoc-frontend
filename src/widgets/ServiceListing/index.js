@@ -18,7 +18,7 @@ export default function ServiceListing({ data }) {
           {data?.items?.map((item, i) => {
             return (
               <div className="" key={i}>
-                <MedicalCard data={item} />
+                <MedicalCard data={item} /> 
               </div>
             )
           })}
