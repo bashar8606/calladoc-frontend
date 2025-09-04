@@ -16,7 +16,7 @@ const HomeAbout = ({ data, slug, ...props }) => {
       <div className="container">
         <div className="grid grid-cols-12 gap-8 lg:gap-[100px]">
           {/* Left side - Image container */}
-          <div className="relative col-span-4">
+          <div className="relative col-span-12 md:col-span-4">
             {/* Image mask group */}
             <div
               className="relative aspect-[456/500]"
@@ -42,19 +42,12 @@ const HomeAbout = ({ data, slug, ...props }) => {
           </div>
 
           {/* Right side - Content */}
-          <div className="col-span-8 gap-[10px] w-full lg:w-[915px]">
+          <div className="col-span-12 md:col-span-8 gap-[10px] w-full lg:w-[915px] max-w-full">
             <div className="flex flex-col w-full">
               {/* "Who we are" label */}
-              <h3 className="font-dmSans font-medium text-lg lg:text-[24px] leading-[3em] text-black mb-0">
+              <h3 className="font-dmSans font-medium text-lg lg:text-[24px] leading-[3em] text-[#1F6DF3] mb-0">
                 {data?.title}
               </h3>
-
-              {/* Main description text */}
-              {/* <p className="font-dmSans font-normal text-2xl lg:text-[44px] leading-[1.636em] text-[#080808] mb-0">
-                Our aim is to enhance healthcare accessibility by offering
-                virtual consultations that are convenient, affordable, and
-                high-quality.
-              </p> */}
 
               <Markdown
                 // className="prose font-dmSans font-normal text-2xl lg:text-[44px] leading-[1.636em] text-[#080808] mb-0"
@@ -71,7 +64,6 @@ const HomeAbout = ({ data, slug, ...props }) => {
               >
                 {data?.description}
               </Markdown>
-              {/* Button container */}
               <div className="flex flex-col gap-[10px] pt-[30px] lg:pt-[50px] w-fit">
                 <ExploreLink>Read more</ExploreLink>
               </div>

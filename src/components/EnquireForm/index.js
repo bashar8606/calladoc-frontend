@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react';
 import style from "./EnquireForm.module.scss"
 import { useEnquireForm } from './useEnquireForm';
@@ -9,7 +10,12 @@ export default function EnquireForm({ }) {
     const { main, initialValues, validationSchema, hasSubmitted, contactUs, width } = useEnquireForm(style);
 
     return (
-        <div className={` ${style.card}`} ref={main}>
+        <div className={` ${style.card} max-w-[500px] py-3  mx-auto `} ref={main}>
+
+
+
+
+<div className='bg-white/20 shadow-lg backdrop-blur-lg rounded-3xl py-10 px-10 overflow-hidden'>
             {/* <h2 className='h4 fw-700'> Chat to our team </h2>
             <p className='text-grey title-sm  mb-lg-4'>We’d love to talk about how we can help you.</p> */}
             <Formik
@@ -69,6 +75,8 @@ export default function EnquireForm({ }) {
                     </Form>
                 )}
             </Formik>
+            </div>
         </div>
+        
     );
 }

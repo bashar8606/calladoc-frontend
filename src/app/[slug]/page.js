@@ -3,34 +3,34 @@ import { PAGES } from "@/constants/apiRoutes";
 import { getPage } from "@/lib/getPages";
 import { notFound } from "next/navigation";
 
-// export async function generateMetadata({ params: { slug, lang } }) {
-//   const data = await getPage(slug, lang)
-//   const seo = data?.data?.seo
-//   // const headersList = headers();
-//   // const header_url = headersList.get("x-url") || "";
-//   // const openGraphImage = data?.seo?.image
-//   //   ? [{ url: data?.seo?.image?.url, alt: data?.seo?.title }]
-//   //   : [];
-//   return {
-//       title: seo?.metaTitle,
-//       description: seo?.metaDescription,
-//     // openGraph: {
-//     //   images: openGraphImage,
-//     //   title: data?.seo?.title,
-//     //   description: data?.seo?.description,
-//     //   // url: header_url,
-//     // },
-//     // twitter: {
-//     //   card: data?.seo?.title,
-//     //   title: data?.seo?.title,
-//     //   description: data?.seo?.description,
-//     //   images: {
-//     //     url: data?.seo?.image?.url,
-//     //     alt: data?.seo?.title,
-//     //   },
-//     // },
-//   };
-// }
+export async function generateMetadata({ params: { slug } }) {
+  const data = await getPage(slug)
+  const seo = data?.data?.seo
+  // const headersList = headers();
+  // const header_url = headersList.get("x-url") || "";
+  // const openGraphImage = data?.seo?.image
+  //   ? [{ url: data?.seo?.image?.url, alt: data?.seo?.title }]
+  //   : [];
+  return {
+      title: seo?.metaTitle,
+      description: seo?.metaDescription,
+    // openGraph: {
+    //   images: openGraphImage,
+    //   title: data?.seo?.title,
+    //   description: data?.seo?.description,
+    //   // url: header_url,
+    // },
+    // twitter: {
+    //   card: data?.seo?.title,
+    //   title: data?.seo?.title,
+    //   description: data?.seo?.description,
+    //   images: {
+    //     url: data?.seo?.image?.url,
+    //     alt: data?.seo?.title,
+    //   },
+    // },
+  };
+}
 
 
 

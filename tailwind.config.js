@@ -38,6 +38,10 @@ export default {
   			dmSans: [
   				'var(--font-dm-sans)',
   				'sans-serif'
+  			],
+        dmSerif: [
+  				'var(--font-dm-serif)',
+  				'sans-serif'
   			]
   		},
   		typography: {

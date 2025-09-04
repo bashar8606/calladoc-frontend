@@ -4,6 +4,7 @@ import styles from "./HomeServices.module.scss";
 import Image from "@/components/Image/image";
 import MedicalCard from "@/components/MedicalCard";
 import { SwiperSlide } from "swiper/react";
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
 import Slider from "@/components/Slider";
 import {
   EffectFade,
@@ -17,17 +18,17 @@ import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
+import ExploreLink from "@/components/ExploreLink";
 
 const HomeServices = ({ data, slug, ...props }) => {
-  
   const customSettings = {
     slidesPerView: 1.5,
     pagination: false,
     spaceBetween: 10,
-    loop:true,
-    autoplay:true,
-    modules:[Autoplay],
-    slidesPerView:1.5,
+    loop: true,
+    autoplay: true,
+    modules: [Autoplay],
+    slidesPerView: 1.2,
     // modules: [Navigation],
     breakpoints: {
       640: {
@@ -42,8 +43,8 @@ const HomeServices = ({ data, slug, ...props }) => {
       },
     },
     navigation: {
-      prevEl: `.swiper-button-prev`,
-      nextEl: `.swiper-button-next`,
+      prevEl: `.sp1`,
+      nextEl: `.sn1`,
     },
   };
   return (
@@ -63,16 +64,28 @@ const HomeServices = ({ data, slug, ...props }) => {
         />
       </div>
       <div className="container">
-        <div className=" lg:mb-14">
-          <h2 className=" text-white text-lg uppercase 2xl:text-2xl font-medium tracking-wider  leading-normal mb-2">
-            {data?.title}
-          </h2>
-          <h3 className="text-white text-5xl xl:text-6xl font-light max-w-[14ch]">
-            {data?.titleMain}
-          </h3>
+        <div className="flex justify-between items-end mb-7 lg:mb-14">
+          <div className="grow">
+            <h2 className=" text-white  text-sm md:text-lg uppercase 2xl:text-2xl font-medium tracking-wider  leading-normal mb-2">
+              {data?.title}
+            </h2>
+            <h3 className="text-white  font-dmSerif  text-3xl md:text-5xl xl:text-6xl font-light max-w-[14ch]">
+              {data?.titleMain}
+            </h3>
+          </div>
+          <div className="">
+            <div className="flex gap-2 lg:justify-end">
+              <button className="size-8 md:size-12 relative bg-white rounded-full border border-white flex items-center justify-center text-blue-600 text-2xl sp1">
+                <IoIosArrowRoundBack />
+              </button>
+              <button className="size-8 md:size-12 relative bg-white rounded-full border border-white flex items-center justify-center text-blue-600 text-2xl sn1">
+                <IoIosArrowRoundForward />
+              </button>
+            </div>
+          </div>
         </div>
-        {console.log(data, "dfsggg")}
-        <Slider className={""} customSettings={customSettings}>
+
+        <Slider className={"mb-8 lg:mb-14"} customSettings={customSettings}>
           {data?.items?.map((item, i) => {
             return (
               <SwiperSlide key={i} className="">
@@ -84,6 +97,9 @@ const HomeServices = ({ data, slug, ...props }) => {
             <div className="custom-pagination"></div>
           </div> */}
         </Slider>
+        <div className="text-center">
+          <ExploreLink variant={"white"}>Read more</ExploreLink>
+        </div>
       </div>
     </section>
   );

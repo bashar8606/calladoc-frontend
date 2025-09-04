@@ -18,6 +18,7 @@ import Link from "@/components/Link";
 import { FaMicrophoneSlash } from "react-icons/fa";
 import { FaVideoSlash } from "react-icons/fa";
 import ExploreLink from "@/components/ExploreLink";
+import { useHomeBanner } from "./useHomeBanner";
 
 export default function HomeBanner({ data }) {
   // const customSettings = {
@@ -34,9 +35,12 @@ export default function HomeBanner({ data }) {
   //     nextEl: `.swiper-button-next`,
   //   },
   // };
+  const { main } = useHomeBanner({});
+
   return (
     <section
-      className={`overflow-hidden flex items-end bg-[#ECF1FF] pb-[100px] relative min-h-[100vh] ${style.section}`}
+      ref={main}
+      className={`overflow-hidden md:flex items-end bg-[#ECF1FF] pb-[30px] md:pb-[100px] relative min-h-[100svh] ${style.section}`}
       id="HomeBanner"
     >
       {/* <Slider className={""} customSettings={customSettings}>
@@ -91,57 +95,93 @@ export default function HomeBanner({ data }) {
         aria-hidden="true"
       ></span>
 
-      <div className="absolute top-0 right-0 w-[40%] h-[95%]  ">
-        <div className="overflow-hidden bg-red-500 rounded-bl-[142px] absolute inset-0">
+      <div className="hidden md:block md:absolute top-0 right-0 w-[40%] h-[95%]  ">
+        <div className="cover overflow-hidden bg-black rounded-bl-[142px] absolute inset-0">
           <Image
-            src="/images/banner.png"
+            src={data?.cover?.url}
             fill
             className="object-cover"
-            alt="sdfs"
+            alt={"calladoc cover image"}
           />
         </div>
         <div className="absolute top-[30%] left-0 -translate-x-1/2 w-[240px] flex flex-col items-end">
-          <div className="pl-3 mb-3 w-full  pr-5 py-2 bg-white rounded-3xl shadow-[0px_4px_24px_0px_rgba(0,0,0,0.07)] inline-flex  items-center gap-2.5 text-indigo-950 text-xl font-medium">
-            <div className="rounded-full size-9 bg-red-400"></div>
+          <div className="calling pl-3 mb-3 w-full  pr-5 py-2 bg-white rounded-3xl shadow-[0px_4px_24px_0px_rgba(0,0,0,0.07)] inline-flex  items-center gap-2.5 text-indigo-950 text-xl font-medium">
+            <div className="rounded-full size-9 relative overflow-hidden">
+              <Image
+                src="/images/banner.png"
+                fill
+                className="object-cover"
+                alt=""
+              />
+            </div>
             Calling...
           </div>
-          <div className="pl-3  pr-5 py-2 bg-white rounded-3xl shadow-[0px_4px_24px_0px_rgba(0,0,0,0.07)] inline-flex  items-center gap-2.5 text-indigo-950 text-xl font-medium">
-            <div className="rounded-full size-9 bg-red-400"></div>
+          <div className=" calla pl-3  pr-5 py-2 bg-white rounded-3xl shadow-[0px_4px_24px_0px_rgba(0,0,0,0.07)] inline-flex  items-center gap-2.5 text-indigo-950 text-lg font-medium">
+            <div className="rounded-full size-9 bg-[#DBDCFF] text-[#6266F6] font-bold text-lg flex justify-center items-center">
+              C
+            </div>
             CallAdoc
           </div>
         </div>
 
         <div className="left-1/2 -translate-x-1/2 bottom-[10%] absolute inline-flex flex-col justify-start items-start gap-2.5">
-          <div className="px-5 py-2 bg-white/40 rounded-[90px] backdrop-blur-md inline-flex justify-center items-center gap-2.5">
-            <div className="size-12 bg-white rounded-[44px] inline-flex flex-col justify-center items-center gap-2.5">
-                <FaMicrophoneSlash />
+          <div className="px-5 b-wrap py-2 bg-white/40 rounded-[90px] backdrop-blur-md inline-flex justify-center items-center gap-2.5">
+            <div className=" b-1 size-12 bg-white rounded-[44px] inline-flex flex-col justify-center items-center gap-2.5">
+              <FaMicrophoneSlash />
             </div>
-            <div className="size-16 text-2xl text-white bg-rose-500 rounded-[100px] inline-flex flex-col justify-center items-center gap-2.5">
+            <div className="b-2 size-16 text-2xl text-white bg-rose-500 rounded-[100px] inline-flex flex-col justify-center items-center gap-2.5">
               <MdCallEnd />
             </div>
-            <div className="size-12 bg-white rounded-[62px] inline-flex flex-col justify-center items-center gap-2.5">
+            <div className="b-3 size-12 bg-white rounded-[62px] inline-flex flex-col justify-center items-center gap-2.5">
               <FaVideoSlash />
             </div>
           </div>
         </div>
       </div>
+
+
       <div className="container">
-        <div className="grid grid-cols-2 items-end">
+        <div className=" grid grid-cols-1  md:grid-cols-2 items-end">
+          <div className="col-span-1 md:hidden mb-5">
+            <div className=" w-full  relative ">
+              <div className="cover overflow-hidden h-[60vh] bg-black rounded-b-[60px] relative">
+                <Image
+                  src={data?.cover?.url}
+                  fill
+                  className="object-cover"
+                  alt={"calladoc cover image"}
+                />
+              </div>
+         
+
+              <div className="left-1/2 -translate-x-1/2 bottom-[10%] absolute inline-flex flex-col justify-start items-start gap-2.5">
+                <div className="px-3 b-wrap py-1 bg-white/40 rounded-[90px] backdrop-blur-md inline-flex justify-center items-center gap-2.5">
+                  <div className=" b-1 size-8  bg-white rounded-[44px] inline-flex flex-col justify-center items-center gap-2.5">
+                    <FaMicrophoneSlash />
+                  </div>
+                  <div className="b-2 size-12 text-2xl text-white bg-rose-500 rounded-[100px] inline-flex flex-col justify-center items-center gap-2.5">
+                    <MdCallEnd />
+                  </div>
+                  <div className="b-3 size-8 bg-white rounded-[62px] inline-flex flex-col justify-center items-center gap-2.5">
+                    <FaVideoSlash />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="col-span-1">
-            <h1 className="font-dmSans lg:text-6xl !leading-tight font-semibold mb-5">
-              <span className="text-indigo-950 ">
-                Telehealth & Online <br />
-                Doctor Consultation
-                <br />
-                in{" "}
-              </span>
-              <span className="text-blue-800 ">Dubai</span>
-            </h1>
-            <p className="w-[565px] mb-6  text-indigo-950 text-xl 2xl:text-2xl leading-10">
-              Primary Care Just One Touch Away No Waiting, Easy Access, and
-              Affordable Rates!
+            <h1
+              className="font-dmSans text-indigo-950 text-3xl lg:text-6xl !leading-tight font-semibold mb-5 fade [&_strong]:text-blue-600 [&_strong]:font-semibold"
+              dangerouslySetInnerHTML={{ __html: data?.title || "" }}
+            />
+            <p className=" w-full max-w-[565px] mb-6  text-indigo-950 text-sm md:text-xl 2xl:text-2xl md:leading-10 fade">
+              {data?.description}
             </p>
-            <ExploreLink>Read more</ExploreLink>
+            <div className="fade">
+              <ExploreLink href={data?.link?.url}>
+                {data?.link?.label}
+              </ExploreLink>
+            </div>
           </div>
         </div>
       </div>
