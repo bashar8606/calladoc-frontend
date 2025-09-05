@@ -38,7 +38,7 @@ const CeoMessage = ({ data, slug, ...props }) => {
                 // className="prose font-dmSans font-normal text-2xl lg:text-[44px] leading-[1.636em] text-[#080808] mb-0"
                 components={{
                   p: ({ children }) => (
-                    <p className="font-dmSans font-normal mb-2 text-lg lg:text-[24px] leading-[1.636em] text-[#080808]">
+                    <p className="font-dmSans font-normal mb-2 text-lg lg:text-[18px] leading-[1.636em] text-[#080808]">
                       {children}
                     </p>
                   ),
