@@ -21,7 +21,7 @@ export default function FeatureCard({  data }) {
               <div className="mb-8">
                 <h3 className="text-3xl font-light  font-dmSerif mb-4 tracking-wide">{data?.title}</h3>
                 <p className="text-white/90 text-sm leading-relaxed tracking-normal opacity-80 mb-4">{data?.description}</p>
-              <span className="inline-block font-light font-dmSerif tracking-wide text-white ">Learn more</span>
+              {/* <span className="inline-block font-light font-dmSerif tracking-wide text-white ">Learn more</span> */}
               </div>
               </div>
               {/* Image */}

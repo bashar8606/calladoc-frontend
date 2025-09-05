@@ -31,10 +31,10 @@ const ServiceBanner = ({ data, slug, ...props }) => {
           <div>
             <div className="flex gap-10 lg:p-10 lg:pl-0 items-center text-center lg:text-start">
               <div className="flex-1 lg:p-0">
-                <h1 className="fade opacity-0 mb-2.5 font-dmSerif text-[25px] font-semibold leading-[30px] text-blue-900 lg:text-[40px] lg:leading-[50px]">
+                <h1 className="fade lg:opacity-0 mb-2.5 font-dmSerif text-[25px] font-semibold leading-[30px] text-blue-900 lg:text-[40px] lg:leading-[50px]">
                   {data?.title}
                 </h1>
-                <h2 className="fade opacity-0 mb-5 flex max-w-[370px] font-displayPro text-sm font-normal leading-6 text-blue-900 lg:mx-0 lg:max-w-[511px] lg:font-displayPro lg:text-base lg:leading-[26px] mx-auto">
+                <h2 className="fade lg:opacity-0 mb-5 flex max-w-[370px] font-displayPro text-sm font-normal leading-6 text-blue-900 lg:mx-0 lg:max-w-[511px] lg:font-displayPro lg:text-base lg:leading-[26px] mx-auto">
                   <div>
                     <p>{data?.description}</p>
                   </div>
@@ -51,7 +51,7 @@ const ServiceBanner = ({ data, slug, ...props }) => {
                   alt={data?.cover?.alt || data?.titleMain || data?.title || ""}
                   fill
                   priority={true}
-                  className="object-cover opacity-0" 
+                  className="object-cover lg:opacity-0" 
                 />
               )}
             </div>

@@ -26,11 +26,15 @@ export default function TestimonialCard({
         {data?.description}
       </p>
       <div className="flex items-center">
-        <img
-          src="/orlando-diggs-headshot.png"
-          alt="Orlando Diggs"
-          className="w-12 h-12 rounded-full mr-4"
-        />
+        {data?.img?.url && (
+          <Image
+            src={data?.img?.url}
+            width={48}
+            height={48}
+            alt={data?.name}
+            className="w-12 h-12 rounded-full mr-4"
+          />
+        )}
         <div>
           <h4 className="text-[#202939] font-semibold"> {data?.name}</h4>
           <p className="text-[#697586] text-sm"> {data?.designation}</p>

@@ -65,7 +65,8 @@ const HomeAbout = ({ data, slug, ...props }) => {
                 {data?.description}
               </Markdown>
               <div className="flex flex-col gap-[10px] pt-[30px] lg:pt-[50px] w-fit">
-                <ExploreLink>Read more</ExploreLink>
+                {data?.link?.url&&
+                <ExploreLink href={data?.link?.url}>{data?.link?.label}</ExploreLink>}
               </div>
             </div>
           </div>

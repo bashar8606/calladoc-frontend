@@ -37,9 +37,9 @@ export default function PackageCard({ data }) {
           <p className="text-white/90 text-sm leading-relaxed tracking-normal opacity-80 mb-4">
             {data?.description}
           </p>
-          <span className="inline-block font-light font-dmSerif tracking-wide text-white ">
+          {/* <span className="inline-block font-light font-dmSerif tracking-wide text-white ">
             Learn more
-          </span>
+          </span> */}
         </div>
       </div>
       </div>

@@ -12,6 +12,8 @@ export default function MediaCard({ data, isSm = false, isLg = false, isPopular 
       <span className="absolute bottom-0 left-0 w-full bg-blue-600 h-[2px] z-20 scale-x-0 transform transition-transform origin-left duration-700 ease-in-out group-hover:scale-x-100" />
     </>
   )}
+  {console.log(data,"datadatadatadatadata")
+  }
   {isPopular ? "" : (
     <div className="aspect-[470/263] relative bg-white w-full rounded-2xl overflow-hidden">
       {data?.cover?.url && (
@@ -27,7 +29,7 @@ export default function MediaCard({ data, isSm = false, isLg = false, isPopular 
   )}
   <div className={`flex flex-col justify-between relative z-20 h-full ${isSm ? "pt-3 pb-4" : isPopular ? "pt-6 pb-4" : "pt-4 pb-8"}`}>
     <div>
-      <p className="text-[#3F3F3F] text-base leading-none mb-3">sdf</p>
+      <p className=" text-base leading-none mb-3 text-blue-600 font-medium">{data?.category?.name}</p>
       <h4 className={`text-black font-normal leading-normal line-clamp-2 ${isSm ? "text-lg" : isLg ? "text-3xl" : "text-xl mb-3"}`}>
         {data?.title}
       </h4>

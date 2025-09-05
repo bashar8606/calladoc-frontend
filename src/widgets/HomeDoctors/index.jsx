@@ -87,7 +87,8 @@ const HomeDoctors = ({ data, slug, ...props }) => {
         </Slider>
 
         <div className="text-center">
-          <ExploreLink variant={"white"}>Read more</ExploreLink>
+          {data?.link?.url&&
+        <ExploreLink href={data?.link?.url}>{data?.link?.label}</ExploreLink>}
         </div>
       </div>
     </section>

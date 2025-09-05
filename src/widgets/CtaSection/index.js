@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./CtaSection.module.scss";
 import Image from "@/components/Image/image";
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const CtaSection = ({ data, slug, ...props }) => {
   const { title, description, items } = data || {};
@@ -23,9 +23,11 @@ const CtaSection = ({ data, slug, ...props }) => {
                  {title}
             </h3>
             <div className="text-center md:text-left">
-              
-            <Button className="min-w-[150px] rounded-full">Get started</Button>
-
+            {data?.link?.url&&
+            <Link href={data?.link?.url} className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 min-w-[150px] rounded-full">
+            {data?.link?.label}
+            </Link>
+          }
             </div>
           </div>
         </div>
