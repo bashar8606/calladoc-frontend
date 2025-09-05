@@ -77,23 +77,23 @@ const ContactDetails = ({ data, slug, ...props }) => {
     >
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {sections.map((section) => (
-            <div key={section.id} className="bg-white/80 rounded-2xl shadow p-8 flex flex-col h-full">
+          {data?.items?.map((section, i) => (
+            <div key={i} className="bg-white/80 rounded-2xl shadow p-8 flex flex-col h-full">
               
               <h3 className="text-2xl font-semibold text-blue-900 mb-3">
-                {section.titleSmall}
+                {section.title}
               </h3>
               <p className="text-sm  text-black/60 mb-1">
-                {section.titleLarge}
+                {section.description}
               </p>
            
               <ul className="space-y-4 mt-4">
-                {section.items?.map((item, index) => {
+                {section?.items?.map((item, index) => {
                   const Icon = iconMap[item.type] ?? (() => null);
                   return (
                     <li key={`${section.id}-${index}`} className="flex items-center">
                       <Icon />
-                      <span className="text-sm text-blue-900 font-medium">{item.label}</span>
+                      <span className="text-sm text-blue-900 font-medium">{item.value}</span>
                     </li>
                   );
                 })}

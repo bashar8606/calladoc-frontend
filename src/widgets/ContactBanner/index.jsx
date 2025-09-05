@@ -33,42 +33,31 @@ const ContactBanner = ({ data, slug, ...props }) => {
             <div className="flex gap-10 lg:p-10 lg:pl-0 items-center text-center lg:text-start">
               <div className="flex-1 lg:p-0">
                 <h2 className="fade opacity-0 text-sm font-semibold text-[#152072] mb-1">
-                  Contact Us
+                 {data?.title}
                 </h2>
                 <h1 className="fade opacity-0 mb-2.5 font-dmSerif text-[25px] font-semibold leading-[30px] text-blue-900 lg:text-[40px] lg:leading-[50px]">
-                  We'd love to hear from you
+                {data?.titleMain}
                 </h1>
                 <h2 className="fade opacity-0 mb-5 flex max-w-[370px] font-displayPro text-sm font-normal leading-6 text-blue-900 lg:mx-0 lg:max-w-[511px] lg:font-displayPro lg:text-base lg:leading-[26px] mx-auto">
                   <div>
-                    <p>We have stores around the world.</p>
+                    <p>  {data?.description}</p>
                   </div>
                 </h2>
-
+          
                 <div className="grid lg:grid-cols-2 gap-4 mt-10">
-                  <div className=" bg-white/40 rounded-2xl border p-4 fade opacity-0">
-                    <h4 className="text-lg font-semibold mb-1">Talk to us</h4>
-                    <p className="mb-2 text-sm text-black/50">
-                      Our Team Is Here To Help
-                    </p>
-                    <a className="underline text-[#152072] text-sm font-medium">
-                      {" "}
-                      +971 5072 46289
-
-
-                    </a>
-                  </div>
-
-                  <div className=" bg-white/40 rounded-2xl border p-4 fade opacity-0">
-                    <h4 className="text-lg font-semibold mb-1">Email to us</h4>
-                    <p className="mb-2 text-sm text-black/50">
-                      Our Team Is Here To Help
-                    </p>
-                    <a className="underline text-[#152072] text-sm font-medium">
-                      {" "}
-                      hello@calladoc.ae
-
-                    </a>
-                  </div>
+                  {data?.items?.map((item, i)=>
+                    <div key={i} className=" bg-white/40 rounded-2xl border p-4 fade opacity-0">
+                      <h4 className="text-lg font-semibold mb-1">{item.title}</h4>
+                      <p className="mb-2 text-sm text-black/50">{item.description}</p>
+                      {item?.items?.map((subItem, index)=>{
+                        return(
+                          <a key={`rr${index}`} className="underline text-[#152072] text-sm font-medium">{subItem.value}</a>
+                        )
+                      })}
+                     
+                    </div>
+                  )}
+              
                 </div>
               </div>
             </div>
