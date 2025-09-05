@@ -1,12 +1,26 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import Image from "@/components/Image/image";
 import MedicalCard from "@/components/MedicalCard";
 import { SERVICE_CATEGORIES, SERVICES } from "@/constants/apiRoutes";
 import nextFetch from "@/utils/nextFetch";
 
-export default function ServiceListing({ data }) {
+// Loading component for Suspense fallback
+function ServiceListingLoading() {
+  return (
+    <section className="overflow-hidden py-10 lg:py-[100px] relative" id="ServiceListing">
+      <div className="container relative z-10">
+        <div className="flex justify-center items-center h-64">
+          <div className="text-lg">Loading services...</div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Main component that uses useSearchParams
+function ServiceListingContent({ data }) {
   const [services, setServices] = useState([]);
   const [categories, setCategories] = useState([]);
   const [filteredServices, setFilteredServices] = useState([]);
@@ -80,7 +94,9 @@ export default function ServiceListing({ data }) {
     router.push(newUrl, { scroll: false });
   };
 
-
+  if (loading) {
+    return <ServiceListingLoading />;
+  }
 
   return (
     <section className="overflow-hidden py-10 lg:py-[100px] relative" id="ServiceListing">
@@ -96,38 +112,35 @@ export default function ServiceListing({ data }) {
           </div>
           <div className="col-span-12 lg:col-span-8">
             <div className='overflow-x-auto'>
-          <div className="flex flex-nowrap gap-3">
-          <button
-            onClick={() => handleCategoryFilter('all')}
-            className={`px-6 py-3 ml-auto rounded-full whitespace-nowrap font-medium transition-all duration-300 ${
-              selectedCategory === 'all'
-                ? 'bg-blue-600 text-white shadow-lg'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-            }`}
-          >
-            All Services
-          </button>
-          
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => handleCategoryFilter(category.slug)}
-              className={`px-6 py-3 whitespace-nowrap rounded-full font-medium transition-all duration-300 ${
-                selectedCategory === category?.slug
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              {category.title}
-            </button>
-          ))}
+              <div className="flex flex-nowrap gap-3">
+                <button
+                  onClick={() => handleCategoryFilter('all')}
+                  className={`px-6 py-3 ml-auto rounded-full whitespace-nowrap font-medium transition-all duration-300 ${
+                    selectedCategory === 'all'
+                      ? 'bg-blue-600 text-white shadow-lg'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  All Services
+                </button>
+                
+                {categories.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => handleCategoryFilter(category.slug)}
+                    className={`px-6 py-3 whitespace-nowrap rounded-full font-medium transition-all duration-300 ${
+                      selectedCategory === category?.slug
+                        ? 'bg-blue-600 text-white shadow-lg'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    {category.title}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-          </div>
-        </div>
-
-        {/* Category Filter Buttons */}
-     
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5 gap-2 lg:gap-4">
@@ -145,6 +158,15 @@ export default function ServiceListing({ data }) {
         </div>
       </div>
     </section>
+  );
+}
+
+// Main export component wrapped in Suspense
+export default function ServiceListing({ data }) {
+  return (
+    <Suspense fallback={<ServiceListingLoading />}>
+      <ServiceListingContent data={data} />
+    </Suspense>
   );
 }
 
