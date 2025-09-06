@@ -3,11 +3,11 @@ const nextConfig = {
     images: {
         remotePatterns: [
             {
-                protocol: 'http',
+                protocol: 'https',
                 hostname: '40.172.190.110',
                 port: '1337',
             },{
-              protocol: 'http',
+              protocol: 'https',
               hostname: 'admin.calladoc.ae',
               port: '',
           },

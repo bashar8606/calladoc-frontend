@@ -66,7 +66,7 @@ export default function Header({ data }) {
               src={data?.favicon?.url}
               className="object-cover"
               fill
-              alt="udf logo"
+              alt="Calladoc logo"
             />
           </Link>
 
