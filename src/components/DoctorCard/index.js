@@ -9,7 +9,6 @@ export default function DoctorCard({ imageSrc, title, data }) {
   return (
     <Link href={`/doctors/${data?.slug}`} className="group block relative w-full aspect-[295/400] rounded-[20px] overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]">
       {/* Background Image */}
-      {console.log(data,"sgergerg")}
       <Image
         src={data?.img?.url}
         alt={`${data?.title}`}

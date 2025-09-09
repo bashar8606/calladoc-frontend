@@ -2,7 +2,6 @@
 import Image from "@/components/Image/image";
 
 export default function DoctorsSingleBanner({ data }) {
-  console.log(data,"datadatadatadatadatadata");
   
   return (
 
@@ -33,13 +32,11 @@ export default function DoctorsSingleBanner({ data }) {
                 </h1>
              
                 {Array.isArray(data?.expertise) && data.expertise.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-1 md:gap-1.5 mb-4">
                 {data?.expertise?.map((item, idx) => (
-                    <h2 key={idx} className="mb-5 flex max-w-[370px] font-displayPro text-sm font-normal leading-6 text-blue-900 lg:mx-0 lg:max-w-[511px] lg:font-displayPro lg:text-base lg:leading-[26px] mx-auto">
-                    <div>
-                      <p>{item?.title}</p>
-                    </div>
-                  </h2>
+                    <p key={idx} className="mb-1 flex max-w-[370px] font-displayPro text-sm font-normal leading-6 text-blue-900 lg:mx-0 lg:max-w-[511px] lg:font-displayPro lg:text-base lg:leading-[26px] mx-auto">
+                     {item?.title}
+                  </p>
                 ))}
               </div>
             )}

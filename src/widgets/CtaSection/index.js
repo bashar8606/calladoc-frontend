@@ -14,7 +14,7 @@ const CtaSection = ({ data, slug, ...props }) => {
             <Image
               src={"/images/cta-banner.png"}
               fill
-              alt="xf"
+              alt="calladoc cta banner"
               className="object-cover"
             />
           </div>

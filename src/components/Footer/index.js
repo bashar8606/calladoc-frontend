@@ -25,7 +25,7 @@ export default function Footer({ data }) {
               <div>
                 <Link
                   href="/"
-                  className={`block aspect-[100/35]   relative duration-300 ease-out w-[120px]  lg:w-[190px]`}
+                  className={`block aspect-[100/35]   relative duration-300 ease-out  w-[150px] lg:w-[190px]`}
                 >
                   <Image
                     src={data?.favicon?.url}

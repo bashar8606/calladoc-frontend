@@ -15,7 +15,7 @@ export async function generateMetadata({ params: { slug } }) {
 }
 
 
-export default async function LeaderSinglePage({ params: { slug } }) {
+export default async function BlogSinglePage({ params: { slug } }) {
     const data = await getSingleMedia(slug)
     
     if (!data) return notFound();
