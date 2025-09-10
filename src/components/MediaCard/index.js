@@ -12,8 +12,7 @@ export default function MediaCard({ data, isSm = false, isLg = false, isPopular 
       <span className="absolute bottom-0 left-0 w-full bg-blue-600 h-[2px] z-20 scale-x-0 transform transition-transform origin-left duration-700 ease-in-out group-hover:scale-x-100" />
     </>
   )}
-  {console.log(data,"datadatadatadatadata")
-  }
+
   {isPopular ? "" : (
     <div className="aspect-[470/263] relative bg-white w-full rounded-2xl overflow-hidden">
       {data?.cover?.url && (

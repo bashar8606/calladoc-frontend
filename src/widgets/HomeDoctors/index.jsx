@@ -66,10 +66,10 @@ const HomeDoctors = ({ data, slug, ...props }) => {
           </div>
           <div className="">
             <div className="flex gap-2 lg:justify-end">
-              <button className="size-8 md:size-12 relative bg-white rounded-full border border-white flex items-center justify-center text-blue-600 text-2xl sp1">
+              <button       aria-label="Previous Doctor" className="size-8 md:size-12 relative bg-white rounded-full border border-white flex items-center justify-center text-blue-600 text-2xl sp1">
                 <IoIosArrowRoundBack />
               </button>
-              <button className="size-8 md:size-12 relative bg-white rounded-full border border-white flex items-center justify-center text-blue-600 text-2xl sn1">
+              <button       aria-label="Next Doctor" className="size-8 md:size-12 relative bg-white rounded-full border border-white flex items-center justify-center text-blue-600 text-2xl sn1">
                 <IoIosArrowRoundForward />
               </button>
             </div>
@@ -88,7 +88,7 @@ const HomeDoctors = ({ data, slug, ...props }) => {
 
         <div className="text-center">
           {data?.link?.url&&
-        <ExploreLink href={data?.link?.url}>{data?.link?.label}</ExploreLink>}
+        <ExploreLink aria-label={data?.link?.label} href={data?.link?.url}>{data?.link?.label}</ExploreLink>}
         </div>
       </div>
     </section>

@@ -178,7 +178,7 @@ export default function HomeBanner({ data }) {
               {data?.description}
             </p>
             <div className="fade">
-              <ExploreLink href={data?.link?.url}>
+              <ExploreLink aria-label={data?.link?.label} href={data?.link?.url}>
                 {data?.link?.label}
               </ExploreLink>
             </div>

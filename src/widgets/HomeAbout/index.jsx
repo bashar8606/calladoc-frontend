@@ -45,9 +45,9 @@ const HomeAbout = ({ data, slug, ...props }) => {
           <div className="col-span-12 md:col-span-8 gap-[10px] w-full lg:w-[915px] max-w-full">
             <div className="flex flex-col w-full">
               {/* "Who we are" label */}
-              <h3 className="font-dmSans font-medium text-lg lg:text-[24px] leading-[3em] text-[#1F6DF3] mb-0">
+              <h2 className="font-dmSans font-medium text-lg lg:text-[24px] leading-[3em] text-[#1F6DF3] mb-0">
                 {data?.title}
-              </h3>
+              </h2>
 
               <Markdown
                 // className="prose font-dmSans font-normal text-2xl lg:text-[44px] leading-[1.636em] text-[#080808] mb-0"
@@ -66,7 +66,7 @@ const HomeAbout = ({ data, slug, ...props }) => {
               </Markdown>
               <div className="flex flex-col gap-[10px] pt-[30px] lg:pt-[50px] w-fit">
                 {data?.link?.url&&
-                <ExploreLink href={data?.link?.url}>{data?.link?.label}</ExploreLink>}
+                <ExploreLink aria-label={data?.link?.label} href={data?.link?.url}>{data?.link?.label}</ExploreLink>}
               </div>
             </div>
           </div>

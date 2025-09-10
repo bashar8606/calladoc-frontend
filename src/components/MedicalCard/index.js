@@ -11,7 +11,7 @@ export default function MedicalCard({ imageSrc, title, data }) {
       {/* Background Image */}
       <Image
         src={data?.cover?.url}
-        alt={`${data?.title}`}
+        alt={`${data?.title} image`}
         fill
         className="object-cover transition-transform  ease-[cubic-bezier(0.4,0,0.2,1)] duration-500 group-hover:scale-110"
       />
