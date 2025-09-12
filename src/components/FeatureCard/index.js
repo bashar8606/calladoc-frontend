@@ -9,15 +9,15 @@ export default function FeatureCard({ data }) {
       <div className="overflow-hidden aspect-[100/70] transform-gpu translate-x-[0%] translate-y-[0%] ease-in-out duration-500 group-hover:translate-y-[0%] w-full  relative before:content-[''] before:absolute before:inset-0  before:z-10 before:pointer-events-none before:bg-gradient-to-t before:from-[#2a457e] before:to-transparent">
         
         <Image
-          // src={data?.img?.url}
-          src={"/family.png"}
+          src={data?.img?.url}
+          // src={"/family.png"}
           alt={data?.title}
           fill
           className="object-cover "
         />
       </div>
 
-      <div className="p-8">
+      <div className="p-4 md:p-8">
         {/* Icon */}
         {/* <div className="mb-6">
                 <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
