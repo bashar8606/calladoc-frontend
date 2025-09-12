@@ -126,7 +126,7 @@ export default function Footer({ data }) {
               <p className="text-white text-xs md:text-sm">
                 Designed by{" "}
                 <a
-                  href="https://voizzit.com/"
+                  href="https://adaminnovations.in/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:underline"

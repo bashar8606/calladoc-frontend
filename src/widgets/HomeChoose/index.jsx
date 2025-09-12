@@ -50,9 +50,6 @@ const HomeChoose = ({ data, slug, ...props }) => {
     <section
       className={`home-services-widget relative overflow-hidden bg-gradient-to-b from-zinc-100 to-white py-[60px] lg:py-[100px]`}
     >
-      {/* <h2>HomeDoctors Widget</h2> */}
-      {/* Widget content here */}
-      {/* {data && <pre>{JSON.stringify(data, null, 2)}</pre>} */}
 
       <div className="container">
         <div className="  mb-7 lg:mb-14">
@@ -71,9 +68,7 @@ const HomeChoose = ({ data, slug, ...props }) => {
               </div>
             );
           })}
-          {/* <div className="container">
-            <div className="custom-pagination"></div>
-          </div> */}
+         
         </div>
       </div>
     </section>
