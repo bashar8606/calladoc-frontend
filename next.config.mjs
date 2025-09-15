@@ -5,7 +5,13 @@ const securityHeaders = [
       value: `
         default-src 'self';
         script-src 'self' 'unsafe-inline' https://embed.tawk.to;
-        connect-src 'self' https://embed.tawk.to https://va.tawk.to wss://embed.tawk.to wss://va.tawk.to https://your-api.com;
+        connect-src 'self'
+          https://embed.tawk.to
+          https://va.tawk.to
+          https://static-v.tawk.to
+          wss://embed.tawk.to
+          wss://va.tawk.to
+          https://your-api.com;
         style-src 'self' 'unsafe-inline' https://embed.tawk.to https://fonts.googleapis.com;
         style-src-elem 'self' 'unsafe-inline' https://embed.tawk.to https://fonts.googleapis.com;
         img-src 'self' data: blob: https:;
@@ -14,7 +20,6 @@ const securityHeaders = [
       `.replace(/\s{2,}/g, " ").trim(),
     },
   ];
-  
   const nextConfig = {
     async headers() {
       return [
