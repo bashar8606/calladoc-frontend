@@ -31,10 +31,9 @@ const GlobalProviders = ({ children }) => {
           }),
         }}
       >
-        <RecoilRoot>{children}</RecoilRoot>
-      </SWRConfig>
+        <RecoilRoot>{children}
 
-      <TawkMessengerReact
+        <TawkMessengerReact
         propertyId="685bb3263e441e1910e8f100"
         widgetId="1iuj37kfh"
         onBeforeLoad={() => {
@@ -56,6 +55,10 @@ const GlobalProviders = ({ children }) => {
           console.log("Tawk widget loaded");
         }}
       />
+        </RecoilRoot>
+      </SWRConfig>
+
+    
     </>
   );
 };

@@ -1,33 +1,39 @@
 /** @type {import('next').NextConfig} */
-const securityHeaders = [
-    {
-      key: "Content-Security-Policy",
-      value: `
-        default-src 'self';
-        script-src 'self' 'unsafe-inline' https://embed.tawk.to;
-        connect-src 'self'
-          https://embed.tawk.to
-          https://va.tawk.to
-          https://static-v.tawk.to
-          wss://embed.tawk.to
-          wss://va.tawk.to
-          https://your-api.com;
-        style-src 'self' 'unsafe-inline' https://embed.tawk.to https://fonts.googleapis.com;
-        style-src-elem 'self' 'unsafe-inline' https://embed.tawk.to https://fonts.googleapis.com;
-        img-src 'self' data: blob: https:;
-        font-src 'self' https://fonts.gstatic.com;
-        frame-src https://embed.tawk.to;
-      `.replace(/\s{2,}/g, " ").trim(),
-    },
-  ];
-  const nextConfig = {
+const nextConfig = {
     async headers() {
       return [
         {
-          source: "/(.*)",
-          headers: securityHeaders,
-        },
-      ];
+          source: '/(.*)',
+          headers: [
+            {
+              key: 'Content-Security-Policy',
+              value: `
+                script-src 'self' 'unsafe-inline' 'unsafe-eval' https://embed.tawk.to https://*.tawk.to https://cdn.jsdelivr.net;
+                img-src 'self' 
+                  https://embed.tawk.to 
+                  https://*.tawk.to 
+                  https://cdn.jsdelivr.net 
+                  https://admin.calladoc.ae 
+                  https://40.172.190.110:1337
+                  data: blob:;
+                font-src 'self' 
+                  https://embed.tawk.to 
+                  https://*.tawk.to 
+                  https://*.tawkto.net 
+                  data:;
+                connect-src 'self' 
+                  https://*.tawk.to 
+                  https://*.tawkto.net 
+                  wss://*.tawk.to 
+                  wss://*.tawkto.net;
+                style-src 'self' 'unsafe-inline' 
+                  https://embed.tawk.to 
+                  https://*.tawk.to;
+              `.replace(/\s+/g, ' ').trim()
+            }
+          ]
+        }
+      ]
     },
     images: {
       remotePatterns: [
@@ -45,10 +51,17 @@ const securityHeaders = [
           hostname: "127.0.0.1",
           port: "1337",
         },
+        {
+          protocol: "https",
+          hostname: "embed.tawk.to",
+        },
+        {
+          protocol: "https",
+          hostname: "cdn.jsdelivr.net",
+        }
       ],
       formats: ["image/webp"],
     },
   };
   
   export default nextConfig;
-  
