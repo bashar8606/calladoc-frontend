@@ -1,8 +1,14 @@
 "use client";
 import { RecoilRoot } from "recoil";
-import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import fetcher from "@/utils/fetcher";
 import { SWRConfig } from "swr";
+
+const TawkMessengerReact = dynamic(
+  () => import("@tawk.to/tawk-messenger-react"),
+  { ssr: false }
+);
 
 const GlobalProviders = ({ children }) => {
   function localStorageProvider() {
@@ -18,6 +24,19 @@ const GlobalProviders = ({ children }) => {
     }
   }
 
+  const [isTawkEnabled, setIsTawkEnabled] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const enable = () => setIsTawkEnabled(true);
+    if ("requestIdleCallback" in window) {
+      // @ts-ignore - safari types
+      window.requestIdleCallback(enable, { timeout: 3000 });
+    } else {
+      setTimeout(enable, 2000);
+    }
+  }, []);
+
   return (
     <>
       <SWRConfig
@@ -32,29 +51,30 @@ const GlobalProviders = ({ children }) => {
         }}
       >
         <RecoilRoot>{children}
-
-        <TawkMessengerReact
-        propertyId="685bb3263e441e1910e8f100"
-        widgetId="1iuj37kfh"
-        onBeforeLoad={() => {
-          console.log("Tawk is about to load");
-        }}
-        onStatusChange={(status) => {
-          console.log("Status changed:", status);
-        }}
-        onChatHidden={() => {
-          console.log("Chat hidden");
-        }}
-        onChatMessageSystem={(message) => {
-          console.log("System message:", message);
-        }}
-        onUnreadCountChanged={(count) => {
-          console.log("Unread count changed:", count);
-        }}
-        onLoad={() => {
-          console.log("Tawk widget loaded");
-        }}
-      />
+          {isTawkEnabled && (
+            <TawkMessengerReact
+              propertyId="685bb3263e441e1910e8f100"
+              widgetId="1iuj37kfh"
+              onBeforeLoad={() => {
+                console.log("Tawk is about to load");
+              }}
+              onStatusChange={(status) => {
+                console.log("Status changed:", status);
+              }}
+              onChatHidden={() => {
+                console.log("Chat hidden");
+              }}
+              onChatMessageSystem={(message) => {
+                console.log("System message:", message);
+              }}
+              onUnreadCountChanged={(count) => {
+                console.log("Unread count changed:", count);
+              }}
+              onLoad={() => {
+                console.log("Tawk widget loaded");
+              }}
+            />
+          )}
         </RecoilRoot>
       </SWRConfig>
 
