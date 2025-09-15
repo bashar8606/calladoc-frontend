@@ -1,5 +1,6 @@
 "use client";
 import { RecoilRoot } from "recoil";
+import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
 import fetcher from "@/utils/fetcher";
 import { SWRConfig } from "swr";
 const GlobalProviders = ({ children }) => {
@@ -24,8 +25,9 @@ const GlobalProviders = ({ children }) => {
 
 
   return (
+    <>
     
-    <SWRConfig
+       <SWRConfig
       value={{
         revalidateOnFocus: true, // Refreshes the data when the window is refocused
         dedupingInterval: 10000, // Prevents re-fetching the same data within 10 seconds
@@ -39,6 +41,13 @@ const GlobalProviders = ({ children }) => {
     >
       <RecoilRoot>{children}</RecoilRoot>
     </SWRConfig>
+    
+    <TawkMessengerReact
+                propertyId="685bb3263e441e1910e8f100"
+                widgetId="1iuj37kfh"/>
+                
+                </>
+ 
   );
 };
 

@@ -63,7 +63,7 @@ const PackageListing = ({ data, slug, ...props }) => {
           </h3>
         </div> */}
         <div className={"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"} >
-          {data?.items?.map((item, i) => {
+          {data?.items?.map((data, i) => {
             return (
               <div key={i} className="">
                 <PackageCard data={item}  />

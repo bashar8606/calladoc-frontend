@@ -8,6 +8,7 @@ import nextFetch from "@/utils/nextFetch";
 import { GLOBAL } from "@/constants/apiRoutes";
 import { DM_Sans, DM_Serif_Display } from "next/font/google";
 
+
 const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dm-sans",
@@ -37,6 +38,8 @@ export default async function RootLayout({ children }) {
           <Footer data={data?.data} />
           <Toaster />
         </GlobalProviders>
+  
+
       </body>
     </html>
   );

@@ -239,7 +239,7 @@ export default function Header({ data }) {
       href="https://wa.me/971502909369?text=hi"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed z-[100] right-4 bottom-4 md:right-8 md:bottom-8 text-white rounded-full shadow-lg flex items-center justify-center w-14 h-14 transition-colors duration-200"
+      className="fixed z-[100] right-[20px] bottom-24 md:right-[20px] md:bottom-24 text-white rounded-full shadow-lg flex items-center justify-center size-16 md:size-16 transition-colors duration-200"
       style={{
         background: "linear-gradient(45deg, #03a936e8, #beffe2a6)",
         backdropFilter: "blur(3px)",
