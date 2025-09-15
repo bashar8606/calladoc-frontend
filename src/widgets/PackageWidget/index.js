@@ -133,7 +133,7 @@ const PackageWidget = ({ data, slug, ...props }) => {
                     <Check className="w-3 h-3 text-white" />
                   </div>
                   <span className="text-gray-700 text-sm flex-1">
-                    {feature.title}
+                    {feature?.title}
                   </span>
                   {/* {feature.hasInfo && <Info className="w-4 h-4 text-gray-400 flex-shrink-0" />} */}
                 </div>
