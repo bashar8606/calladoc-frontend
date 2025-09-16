@@ -133,7 +133,7 @@ const PackageWidget = ({ data, slug, ...props }) => {
           <div>
           <h4 className="font-semibold text-gray-900 mb-4">Who can avail</h4>
           <p className="text-gray-700 text-sm flex-1 mb-7">
-                    {data?.avail||"Type 2 Diabetes, Prediabetes, Gestational Diabetes Mellitus (GDM), Insulin Resistance."}
+                    {data?.items[0]?.avail||"Type 2 Diabetes, Prediabetes, Gestational Diabetes Mellitus (GDM), Insulin Resistance."}
                   </p>
 
             <h4 className="font-semibold text-gray-900 mb-4">Features</h4>
@@ -151,7 +151,7 @@ const PackageWidget = ({ data, slug, ...props }) => {
               ))}
             </div>
             <p className="text-gray-500 text-sm flex-1 ">
-                    {data?.note||"Customization (if required) Lab services screening Medical Assessment devices etc"}
+                    {data?.items[0]?.note||"Customization (if required) Lab services screening Medical Assessment devices etc"}
                   </p>
           </div>
         </Card>
