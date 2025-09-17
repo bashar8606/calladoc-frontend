@@ -9,7 +9,7 @@ import Image from "@/components/Image/image";
 const HomeAbout = ({ data, slug, ...props }) => {
   return (
     <section
-      className={`home-about-widget bg-white w-full py-16 lg:py-[120px] ${
+      className={`home-about-widget bg-white w-full py-16 lg:py-[120px] overflow-hidden ${
         props.className || ""
       }`}
     >

@@ -13,9 +13,10 @@ const ContentSec = ({ data, slug, ...props }) => {
       {...props}
     >
       <div className="container">
-      <div className=" lg:mb-14">
+      {title &&<div className=" lg:mb-14">
         {/* <h2 className="  text-lg text-[#2463eb] text-center uppercase 2xl:text-2xl font-semibold tracking-wider  leading-normal mb-2">{title}</h2> */}
-      <h3 className="text-sky-900 text-center mx-auto font-dmSerif  text-5xl xl:text-6xl font-light ">{title}</h3></div>
+     
+    <h3 className="text-sky-900 text-center mx-auto font-dmSerif  text-5xl xl:text-6xl font-light ">{title}</h3> </div>}
         {description && <p>{description}</p>}
         {items &&
           items.map((item, idx) => {
@@ -25,7 +26,7 @@ const ContentSec = ({ data, slug, ...props }) => {
                 key={item.id}
                 className={`flex flex-col lg:flex-row ${
                   isEven ? "" : "lg:flex-row-reverse"
-                } items-center gap-8 lg:gap-20 py-12`}
+                } items-center gap-8 lg:gap-20 py-4 md:py-12`}
               >
                 {/* Left Side: Image */}
                 <div className="w-full lg:w-1/2 flex justify-center items-center">

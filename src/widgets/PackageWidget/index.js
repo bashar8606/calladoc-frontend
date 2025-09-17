@@ -86,7 +86,7 @@ const PackageWidget = ({ data, slug, ...props }) => {
                         {item?.type}
                       </h3>
                       {item?.description && (
-                        <p className="text-white/65 text-sm text-center">
+                        <p className="text-white text-sm text-center">
                           {item?.description}
                         </p>
                       )}

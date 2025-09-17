@@ -9,7 +9,7 @@ import Image from "@/components/Image/image";
 const CeoMessage = ({ data, slug, ...props }) => {
   return (
     <section
-      className={`home-about-widget bg-white w-full pt-16 lg:pt-[120px] bg-[linear-gradient(346deg,rgb(32_108_233/56%)_5%,#6ca0f363_13%,#f9fafe_44%)]`}
+      className={`home-about-widget overflow-hidden bg-white w-full pt-16 lg:pt-[120px] bg-[linear-gradient(346deg,rgb(32_108_233/56%)_5%,#6ca0f363_13%,#f9fafe_44%)]`}
     >
       <div className="container">
         <div className="grid grid-cols-12 gap-0 lg:gap-[100px] items-end">
