@@ -12,7 +12,7 @@ const CeoMessage = ({ data, slug, ...props }) => {
       className={`home-about-widget bg-white w-full pt-16 lg:pt-[120px] bg-[linear-gradient(346deg,rgb(32_108_233/56%)_5%,#6ca0f363_13%,#f9fafe_44%)]`}
     >
       <div className="container">
-        <div className="grid grid-cols-12 gap-8 lg:gap-[100px] items-end">
+        <div className="grid grid-cols-12 gap-0 lg:gap-[100px] items-end">
        
           <div className="col-span-12 md:col-span-6 gap-[10px] w-full pb-16 lg:pb-[120px] max-w-full">
             <div className="flex flex-col w-full">

@@ -14,7 +14,7 @@ const HomeAbout = ({ data, slug, ...props }) => {
       }`}
     >
       <div className="container">
-        <div className="grid grid-cols-12 gap-8 lg:gap-[100px]">
+        <div className="grid grid-cols-12 gap-0 lg:gap-[100px]">
           {/* Left side - Image container */}
           <div className="relative col-span-12 md:col-span-4">
             {/* Image mask group */}
