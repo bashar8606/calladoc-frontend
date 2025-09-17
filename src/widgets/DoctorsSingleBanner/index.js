@@ -30,8 +30,8 @@ export default function DoctorsSingleBanner({ data }) {
                 <h1 className="mb-2.5 font-dmSerif text-[25px] font-semibold leading-[30px] text-blue-900 lg:text-[40px] lg:leading-[50px]">
                   {data?.name}
                 </h1>
-             
-                {Array.isArray(data?.expertise) && data.expertise.length > 0 && (
+                <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: data?.description }}></div>
+                {/* {Array.isArray(data?.expertise) && data.expertise.length > 0 && (
               <div className="flex flex-wrap gap-1 md:gap-1.5 mb-4">
                 {data?.expertise?.map((item, idx) => (
                     <p key={idx} className="mb-1 flex max-w-[370px] font-displayPro text-sm font-normal leading-6 text-blue-900 lg:mx-0 lg:max-w-[511px] lg:font-displayPro lg:text-base lg:leading-[26px] mx-auto">
@@ -39,7 +39,7 @@ export default function DoctorsSingleBanner({ data }) {
                   </p>
                 ))}
               </div>
-            )}
+            )} */}
               </div>
             </div>
           </div>

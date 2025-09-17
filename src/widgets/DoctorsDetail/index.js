@@ -41,7 +41,16 @@ export default function DoctorDetail({ data }) {
 
 
               <h2 className="  text-3xl lg:text-5xl xl:text-6xl font-semibold  lg:leading-normal xl:leading-tight bg-gradient-to-r from-[#242E49]  to-[#5B95F9] bg-clip-text text-transparent font-condensed mb-4 lg:mb-4">{data?.title}</h2>
-              <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: data?.description }}></div>
+             {Array.isArray(data?.expertise) && data.expertise.length > 0 && (
+              <div className="flex flex-wrap gap-1 md:gap-1.5 mb-4">
+                {data?.expertise?.map((item, idx) => (
+                    <p key={idx} className="mb-1 flex max-w-[370px] font-displayPro text-sm font-normal leading-6 text-blue-900 lg:mx-0 lg:max-w-[511px] lg:font-displayPro lg:text-base lg:leading-[26px] mx-auto">
+                     {item?.title}
+                  </p>
+                ))}
+              </div>
+            )}
+              {/* <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: data?.description }}></div> */}
             </div>
             {/* <div className="col-span-12 lg:col-span-4 relative">
               <div className="relative">
