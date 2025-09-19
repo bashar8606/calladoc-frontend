@@ -97,7 +97,7 @@ const PackageWidget = ({ data, slug, ...props }) => {
                         {item?.price}
                         <span className="text-white/65 text-sm">AED</span>
                       </div>
-                      <div className="text-white/65 text-sm">
+                      <div className="text-white text-sm">
                         /{item?.title}
                       </div>
                     </div>
