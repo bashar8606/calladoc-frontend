@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FaFacebookF, FaYoutube } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
 import { FaLinkedinIn } from "react-icons/fa6";
-import { FaInstagram } from "react-icons/fa";
+import { FaInstagram, FaTiktok } from "react-icons/fa";
 import { LiaSnapchat } from "react-icons/lia";
 import Image from "../Image/image";
 import Link from "next/link";
@@ -15,6 +15,7 @@ export default function Footer({ data }) {
     youtube: <FaYoutube />,
     snapchat: <LiaSnapchat />,
     twitter: <RiTwitterXLine />,
+    tiktok: <FaTiktok />,
   };
   return (
     <footer className="bg-[#001647]">
@@ -29,14 +30,14 @@ export default function Footer({ data }) {
                 >
                   <Image
                     src={data?.favicon?.url}
-                    className="object-cover filter brightness-0 invert"
+                    className="object-cover object-left filter brightness-0 invert"
                     fill
                     alt="udf logo"
                   />
                 </Link>
-                <div className="flex flex-col lg:flex-row justify-between lg:items-center mt-16 space-y-3">
+                <div className="flex flex-col ps-3 lg:flex-row justify-between lg:items-center mt-3 space-y-3 mb-5">
                   <div className="justify-start items-start gap-[13px] inline-flex ">
-                    {data?.socialLinks?.map((link, index) => {
+                    {socialLinks?.map((link, index) => {
                       const IconComponent = iconMap[link?.label];
                       return (
                         <a
@@ -141,3 +142,21 @@ export default function Footer({ data }) {
     </footer>
   );
 }
+
+const socialLinks = [
+  {
+    "label": "instagram",
+    "url": "https://www.instagram.com/calladochealthcare?utm_source=ig_web_button_share_sheet&igsh=YzZ1ZWEzZTNjYng=",
+    "title": "Follow us on Instagram"
+  },
+  {
+    "label": "facebook", 
+    "url": "https://www.facebook.com/profile.php?id=61565427012289",
+    "title": "Follow us on Facebook"
+  },
+  {
+    "label": "tiktok",
+    "url": "https://www.tiktok.com/@calladochealthcare?is_from_webapp=1&sender_device=pc",
+    "title": "Follow us on TikTok"
+  }
+]
