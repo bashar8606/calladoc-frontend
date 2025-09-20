@@ -51,6 +51,7 @@ relative h-auto lg:flex lg:items-center lg:justify-center p-0 pb-[40px] md:pb-[5
                   alt={data?.cover?.alt || data?.titleMain || data?.title || ""}
                   fill
                   priority={true}
+                  
                   className="object-cover lg:opacity-0"
                 />
               )}

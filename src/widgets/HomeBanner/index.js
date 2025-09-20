@@ -148,6 +148,7 @@ export default function HomeBanner({ data }) {
                 <Image
                   src={data?.cover?.url}
                   fill
+                  priority
                   className="object-cover"
                   alt={"calladoc cover image"}
                 />
