@@ -51,7 +51,7 @@ export default function Header({ data }) {
   return (
     <>
     <header
-      className={`fixed top-0 left-0 z-50 w-full duration-300 ease-out ${
+      className={`sticky top-0 left-0 z-50 w-full duration-300 ease-out ${
         isHeaderSmall ? "bg-white/40 backdrop-blur-md" : "bg-transparent"
       }`}
       ref={main}

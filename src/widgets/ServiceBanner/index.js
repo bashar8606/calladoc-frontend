@@ -23,7 +23,7 @@ bg-[linear-gradient(108deg,#e1edfe_0%,#adbfff_100%)]
 bg-[position:bottom_right,top_right]
 
 lg:h-[600px]
-relative h-auto lg:flex lg:items-center lg:justify-center p-0 pb-[40px] md:pb-[59px] md:pt-[130px] pt-[77px]"
+relative h-auto lg:flex lg:items-center lg:justify-center p-0 pb-[40px] md:pb-[59px] md:pt-[50px] pt-[0px]"
       style={{ backgroundPosition: "200% 100%, 100% 0" }}
     >
       <div className=" container px-0 md:px-3">

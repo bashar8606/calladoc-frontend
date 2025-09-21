@@ -1,9 +1,8 @@
 "use client";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FaFacebookF, FaYoutube } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
 import { FaLinkedinIn } from "react-icons/fa6";
-import { FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaInstagram, FaTiktok,FaPinterest } from "react-icons/fa";
 import { LiaSnapchat } from "react-icons/lia";
 import Image from "../Image/image";
 import Link from "next/link";
@@ -16,6 +15,7 @@ export default function Footer({ data }) {
     snapchat: <LiaSnapchat />,
     twitter: <RiTwitterXLine />,
     tiktok: <FaTiktok />,
+    pinterest: <FaPinterest />,
   };
   return (
     <footer className="bg-[#001647]">
@@ -37,7 +37,7 @@ export default function Footer({ data }) {
                 </Link>
                 <div className="flex flex-col ps-3 lg:flex-row justify-between lg:items-center mt-3 space-y-3 mb-5">
                   <div className="justify-start items-start gap-[13px] inline-flex ">
-                    {socialLinks?.map((link, index) => {
+                    {data?.socialMediaLinks?.map((link, index) => {
                       const IconComponent = iconMap[link?.label];
                       return (
                         <a
@@ -120,7 +120,14 @@ export default function Footer({ data }) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-1  border-t border-zinc-100/45 py-3 lg:py-4">
             <div>
               <p className=" text-white text-xs md:text-sm  ">
-                ©Copyright . All Right Reserved
+                ©Copyright  <a
+                  href="https://calladoc.ae/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:underline"
+                >
+                  Calladoc.ae
+                </a>. All Right Reserved
               </p>
             </div>
             <div className=" lg:text-right">

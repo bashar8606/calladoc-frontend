@@ -15,7 +15,7 @@ const ContactBanner = ({ data, slug, ...props }) => {
         bg-[linear-gradient(108deg,#E1E2FE_30%,#C3C4FD_100%)]
  
     lg:h-[600px] overflow-hidden
-   relative h-auto lg:flex lg:items-center lg:justify-center p-0  md:pt-[130px] pt-[85px]"
+   relative h-auto lg:flex lg:items-center lg:justify-center p-0  md:pt-[130px] pt-6"
    style={{backgroundPosition: "200% 100%, 100% 0"}}
     >
 

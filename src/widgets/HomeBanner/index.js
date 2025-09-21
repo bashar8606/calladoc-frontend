@@ -40,7 +40,7 @@ export default function HomeBanner({ data }) {
   return (
     <section
       ref={main}
-      className={`overflow-hidden md:flex items-end bg-[#ECF1FF] pb-[30px] md:pb-[100px] relative min-h-[100svh] ${style.section}`}
+      className={`overflow-hidden md:flex items-end bg-[#ECF1FF] pb-[30px] min-h-[calc(100svh-60px)] md:pb-[100px] relative`}
       id="HomeBanner"
     >
       {/* <Slider className={""} customSettings={customSettings}>
