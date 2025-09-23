@@ -32,6 +32,13 @@ export default function Header({ data }) {
   const [openMenu, setOpenMenu] = useState(null);
   const timeoutRef = useRef(null);
 
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleAccordion = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+
   const handleMouseEnter = (menuIndex) => {
     // Clear any existing timeout
     if (timeoutRef.current) {
@@ -105,29 +112,36 @@ export default function Header({ data }) {
           {item.label}
         </AccordionTrigger>
         <AccordionContent>
-          <ul className="pl-3 space-y-2">
-            {item.sub.map((sub, j) => (
-              <li key={j}>
-                <p className="font-medium text-sm">{sub.label}</p>
-                {sub?.links?.length > 0 && (
-                  <ul className="pl-4 mt-1 space-y-1">
-                    {sub.links.map((link) => (
-                      <li key={link.id}>
-                        <SheetClose asChild>
-                          <Link
-                            href={link.url ?? "#"}
-                            className="text-xs text-zinc-700 hover:text-blue-600"
-                          >
-                            {link.label}
-                          </Link>
-                        </SheetClose>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
-          </ul>
+        <ul className="pl-3 space-y-2">
+      {item.sub.map((sub, j) => (
+        <li key={j}>
+          <button
+            onClick={() => toggleAccordion(j)}
+            className="font-medium text-sm flex justify-between w-full text-left"
+          >
+            {sub.label}
+            <span className="ml-2">{openIndex === j ? "−" : "+"}</span>
+          </button>
+
+          {sub?.links?.length > 0 && openIndex === j && (
+            <ul className="pl-4 mt-1 space-y-1">
+              {sub.links.map((link) => (
+                <li key={link.id}>
+                  <SheetClose asChild>
+                    <Link
+                      href={link.url ?? "#"}
+                      className="text-xs text-zinc-700 hover:text-blue-600"
+                    >
+                      {link.label}
+                    </Link>
+                  </SheetClose>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
         </AccordionContent>
       </AccordionItem>
     ) : (
