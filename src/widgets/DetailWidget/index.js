@@ -4,6 +4,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import useHeaderSecondary from "@/hooks/useHeaderSecondary";
 import { Calendar, User } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { IoHomeOutline } from "react-icons/io5";
 
 // export default function DetailWidget({ data }) {
 //   useHeaderSecondary(true)
@@ -202,11 +204,53 @@ export default function DetailWidget({ data }) {
     })
   }
 
+  const pathname = usePathname(); // or const { pathname } = useLocation();
+  
+  // Generate breadcrumb items from pathname
+  const pathSegments = pathname.split('/').filter(Boolean);
+
   return (
-    <section className={`overflow-hidden bg-slate-50 pt-14  pb-12 2xl:pt-[120px] 2xl:pb-[100px]`} id="DetailWidget">
+    <section className={`overflow-hidden bg-slate-50 pt-3  pb-12 2xl:pt-10 2xl:pb-[100px]`} id="DetailWidget">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header Section */}
         <div className="mb-8">
+
+        <nav className=" mb-4 flex items-center text-xs text-blue-700/80 font-medium" aria-label="Breadcrumb">
+      <ol className="inline-flex items-center ">
+        {/* Home - Always present */}
+        <li>
+          <a href="/" className="hover:underline flex items-center">
+            <IoHomeOutline className="me-1" />
+            Home
+          </a>
+        </li>
+        
+        {/* Dynamic segments */}
+        {pathSegments.map((segment, index) => {
+          const href = '/' + pathSegments.slice(0, index + 1).join('/');
+          const isLast = index === pathSegments.length - 1;
+          
+          // Use title from data for the last segment if available
+          const label = decodeURIComponent(segment).replace(/-/g, ' ')
+          
+          return (
+            <li key={href} className={isLast ? 'truncate max-w-[120px] md:max-w-[200px]' : ''}>
+              <span className="mx-0.5 text-blue-700/40">/</span>
+              <Link
+                href={href} 
+                className={`hover:underline capitalize ${isLast ? 'text-blue-900 font-semibold' : ''}`}
+                {...(isLast && { 'aria-current': 'page' })}
+              >
+                {label}
+              </Link>
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+
+
+
           <div className="flex items-center gap-4 mb-4">
             <div variant="secondary" className="capitalize">
               {blogData.category.name}

@@ -3,10 +3,17 @@ import React from "react";
 import styles from "./ServiceBanner.module.scss";
 import Image from "@/components/Image/image";
 import { useServiceBanner } from "./useServiceBanner";
+import { IoHomeOutline } from "react-icons/io5";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const ServiceBanner = ({ data, slug, ...props }) => {
   const { title, description, items } = data || {};
   const { main } = useServiceBanner();
+  const pathname = usePathname(); // or const { pathname } = useLocation();
+  
+  // Generate breadcrumb items from pathname
+  const pathSegments = pathname.split('/').filter(Boolean);
   return (
     <section
       id="DesignSysyemHero"
@@ -31,6 +38,42 @@ relative h-auto lg:flex lg:items-center lg:justify-center p-0 pb-[40px] md:pb-[5
           <div className="px-5 md:px-0">
             <div className="flex gap-10 lg:p-10 lg:pl-0 items-center text-center lg:text-start">
               <div className="flex-1 lg:p-0">
+                {/* Breadcrumb */}
+                <nav className="fade lg:opacity-0 mb-4 flex items-center text-xs text-blue-700/80 font-medium" aria-label="Breadcrumb">
+      <ol className="inline-flex items-center ">
+        {/* Home - Always present */}
+        <li>
+          <a href="/" className="hover:underline flex items-center">
+            <IoHomeOutline className="me-1" />
+            Home
+          </a>
+        </li>
+        
+        {/* Dynamic segments */}
+        {pathSegments.map((segment, index) => {
+          const href = '/' + pathSegments.slice(0, index + 1).join('/');
+          const isLast = index === pathSegments.length - 1;
+          
+          // Use title from data for the last segment if available
+          const label = decodeURIComponent(segment).replace(/-/g, ' ')
+          
+          return (
+            <li key={href} className={isLast ? 'truncate max-w-[120px] md:max-w-[200px]' : ''}>
+              <span className="mx-0.5 text-blue-700/40">/</span>
+              <Link
+                href={href} 
+                className={`hover:underline capitalize ${isLast ? 'text-blue-900 font-semibold' : ''}`}
+                {...(isLast && { 'aria-current': 'page' })}
+              >
+                {label}
+              </Link>
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+
+
                 <h1 className="fade lg:opacity-0 mb-2.5 font-dmSerif text-[25px] font-semibold leading-[30px] text-blue-900 lg:text-[40px] lg:leading-[50px]">
                   {data?.title}
                 </h1>
