@@ -9,14 +9,14 @@ const ContentSec = ({ data, slug, ...props }) => {
   return (
     <section
       id={`widget-${slug}`}
-      className={`py-16 lg:py-[120px] ${styles.container || ""} content-sec-widget`}
+      className={`content-sec1-widget py-16 lg:py-[120px] [&+.content-sec1-widget]:pt-0`}
       {...props}
     >
       <div className="container">
         {title&&
         <div className="mb-5 lg:mb-14 mx-auto max-w-[530px]">
         {/* <h2 className="  text-lg text-[#2463eb] text-center uppercase 2xl:text-2xl font-semibold tracking-wider  leading-normal mb-2">{title}</h2> */}
-    <h3 className="text-sky-900 text-center  font-dmSerif text-xl xl:text-[40px] font-light ">{title}</h3> </div>}
+    <h3 className="text-sky-900 text-center  font-dmSerif text-xl xl:text-[40px] font-light leading-snug">{title}</h3> </div>}
         {description && <p>{description}</p>}
         {items &&
           items.map((item, idx) => {
