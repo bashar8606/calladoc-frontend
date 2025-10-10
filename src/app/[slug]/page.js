@@ -61,7 +61,7 @@ export async function generateMetadata({ params: { slug } }) {
 export default async function CustomPage({ params: { slug } }) {
   const data = await getPage(slug)
   const widgetData = data?.data?.widgets
-  // if (!data) return notFound();
+  if (!data) return notFound();
   // console.log(data,slug,"data");
   return (
     <main>

@@ -10,14 +10,15 @@ const ContentSec = ({ data, slug, ...props }) => {
     <section
       id={`widget-${slug}`}
       className={`content-sec1-widget py-16 lg:py-[120px] [&+.content-sec1-widget]:pt-0`}
-      {...props}
     >
       <div className="container">
-        {title&&
-        <div className="mb-5 lg:mb-14 mx-auto max-w-[530px]">
+        {(title||description)&&
+        <div className="mb-5 lg:mb-14 mx-auto max-w-[700px] text-center">
         {/* <h2 className="  text-lg text-[#2463eb] text-center uppercase 2xl:text-2xl font-semibold tracking-wider  leading-normal mb-2">{title}</h2> */}
-    <h3 className="text-sky-900 text-center  font-dmSerif text-xl xl:text-[40px] font-light leading-snug">{title}</h3> </div>}
-        {description && <p>{description}</p>}
+   {title&& <h3 className="text-sky-900 mb-3    font-dmSerif text-xl xl:text-[40px] font-light leading-snug">{title}</h3> }
+        {description && <p className="opacity-80">{description}</p>}
+
+        </div>}
         {items &&
           items.map((item, idx) => {
             const isEven = idx % 2 === 0;
