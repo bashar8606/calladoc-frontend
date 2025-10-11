@@ -104,7 +104,7 @@ export default function HomeBanner({ data }) {
             alt={"calladoc cover image"}
           />
         </div>
-        <div className="absolute top-[30%] left-0 -translate-x-1/2 w-[240px] flex flex-col items-end">
+        {/* <div className="absolute top-[30%] left-0 -translate-x-1/2 w-[240px] flex flex-col items-end">
           <div className="calling pl-3 mb-3 w-full  pr-5 py-2 bg-white rounded-3xl shadow-[0px_4px_24px_0px_rgba(0,0,0,0.07)] inline-flex  items-center gap-2.5 text-indigo-950 text-xl font-medium">
             <div className="rounded-full size-9 relative overflow-hidden">
               <Image
@@ -122,9 +122,9 @@ export default function HomeBanner({ data }) {
             </div>
             CallAdoc
           </div>
-        </div>
+        </div> */}
 
-        <div className="left-1/2 -translate-x-1/2 bottom-[10%] absolute inline-flex flex-col justify-start items-start gap-2.5">
+        {/* <div className="left-1/2 -translate-x-1/2 bottom-[10%] absolute inline-flex flex-col justify-start items-start gap-2.5">
           <div className="px-5 b-wrap py-2 bg-white/40 rounded-[90px] backdrop-blur-md inline-flex justify-center items-center gap-2.5">
             <div className=" b-1 size-12 bg-white rounded-[44px] inline-flex flex-col justify-center items-center gap-2.5">
               <FaMicrophoneSlash />
@@ -136,7 +136,7 @@ export default function HomeBanner({ data }) {
               <FaVideoSlash />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
 
