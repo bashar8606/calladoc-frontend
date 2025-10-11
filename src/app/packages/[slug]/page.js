@@ -2,6 +2,7 @@ import WidgetBlocks from "@/components/WidgetBlocks"
 import { PAGES } from "@/constants/apiRoutes";
 import { getPage, getSinglePackage, getSingleService } from "@/lib/getPages";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 
 export async function generateMetadata({ params: { slug, lang } }) {
   const data = await getSinglePackage(slug, lang)
@@ -60,12 +61,33 @@ export async function generateMetadata({ params: { slug, lang } }) {
 
 export default async function CustomPage({ params: { slug } }) {
   const data = await getSinglePackage(slug)
+  const seo = data?.data?.seo;
   const widgetData = data?.data?.widgets
   // if (!data) return notFound();
   // console.log(data,slug,"data");
+
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": seo?.metaTitle,
+    "description": seo?.metaDescription,
+    "url": seo?.url,
+    "logo": "https://admin.calladoc.ae/uploads/logo_1_9a17c503ec.svg",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+971502909369",
+      "contactType": "customer service",
+    },
+  };
+
   return (
     <main>
       <WidgetBlocks widgets={widgetData} />
+      
+      <Script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
     </main>
   )
 }

@@ -1,6 +1,7 @@
 import WidgetBlocks from "@/components/WidgetBlocks";
 import { LEADER_PAGE } from "@/constants/apiRoutes";
 import nextFetch from "@/utils/nextFetch";
+import Script from "next/script";
 
 export async function generateMetadata({ params}) {
   const data = await nextFetch(LEADER_PAGE)
@@ -51,10 +52,31 @@ export async function generateMetadata({ params}) {
 
 export default async function DoctorsPage({ params }) {
   const data = await nextFetch(LEADER_PAGE);
+  const seo = data?.data?.seo;
   const widgetData = data?.data?.widgets
+
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": seo?.metaTitle,
+    "description": seo?.metaDescription,
+    "url": seo?.url,
+    "logo": "https://admin.calladoc.ae/uploads/logo_1_9a17c503ec.svg",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+971502909369",
+      "contactType": "customer service",
+    },
+  };
+
   return (
     <main className="min-h-screen">
       <WidgetBlocks widgets={widgetData} />
+      
+      <Script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
     </main>
   )
 }

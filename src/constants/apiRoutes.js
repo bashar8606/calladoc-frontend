@@ -6,7 +6,7 @@ export const HEADER = "/api/header";
 //pages
 export const GLOBAL = "/api/global?populate[favicon]=true&populate[menu][populate][sub][populate][links]=true&populate[footer][populate][link]=true&populate[socialMediaLinks]=true";
 
-export const HOME_PAGE = "/api/home?populate=widgets.items.img,widgets.items.cover,widgets.link,widgets.cover,widgets.items.languages,widgets.items.category,seo";
+export const HOME_PAGE = "/api/home?populate=widgets.items.img,widgets.items.cover,widgets.link,widgets.cover,widgets.items.languages,widgets.items.category,seo,seo.shareImage,seo.ogImage";
 export const CONTACT_PAGE = "/api/contact-page?populate=widgets.cover,seo,seo.shareImage,seo.ogImage,widgets.links.icon";
 export const PAGES = "/api/pages";
 export const SERVICES = "/api/services";

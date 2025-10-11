@@ -1,6 +1,7 @@
 import { getSingleMedia } from "@/lib/getPages";
 import DetailWidget from "@/widgets/DetailWidget";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 
 
 export async function generateMetadata({ params: { slug } }) {
@@ -54,11 +55,32 @@ export async function generateMetadata({ params: { slug } }) {
 
 export default async function BlogSinglePage({ params: { slug } }) {
     const data = await getSingleMedia(slug)
+    const seo = data?.data?.seo;
     
     if (!data) return notFound();
+
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": seo?.metaTitle,
+      "description": seo?.metaDescription,
+      "url": seo?.url,
+      "logo": "https://admin.calladoc.ae/uploads/logo_1_9a17c503ec.svg",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+971502909369",
+        "contactType": "customer service",
+      },
+    };
+
     return (
         <main>
             <DetailWidget data={data?.data}/>
+            
+            <Script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+            />
         </main>
     )
 }
