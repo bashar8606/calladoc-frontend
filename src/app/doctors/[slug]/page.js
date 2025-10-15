@@ -1,3 +1,4 @@
+import WidgetBlocks from "@/components/WidgetBlocks";
 import { getSingleLeader } from "@/lib/getPages";
 import DoctorsDetail from "@/widgets/DoctorsDetail";
 import DoctorsSingleBanner from "@/widgets/DoctorsSingleBanner";
@@ -57,6 +58,7 @@ export async function generateMetadata({ params: { slug } }) {
 export default async function LeaderSinglePage({ params: { slug } }) {
     
     const data = await getSingleLeader(slug)
+    const widgetData = data?.data?.widgets
     const seo = data?.data?.seo;
     if (!data) return notFound();
 
@@ -78,7 +80,7 @@ export default async function LeaderSinglePage({ params: { slug } }) {
         <main>
             <DoctorsSingleBanner data={data?.data} />
             <DoctorsDetail data={data?.data} />
-            
+            <WidgetBlocks widgets={widgetData} />
             <Script
               type="application/ld+json"
               dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}

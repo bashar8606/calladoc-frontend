@@ -77,7 +77,7 @@ relative h-auto lg:flex lg:items-center lg:justify-center p-0 pb-[40px] md:pb-[5
                 <h1 className="fade lg:opacity-0 mb-2.5 font-dmSerif text-[25px] font-semibold leading-[30px] text-blue-900 lg:text-[40px] lg:leading-[50px]">
                   {data?.title}
                 </h1>
-                <h2 className="fade text-justify lg:text-start lg:opacity-0 mb-5 flex max-w-[370px] font-displayPro text-sm font-normal leading-6 text-blue-900 lg:mx-0 lg:max-w-[511px] lg:font-displayPro lg:text-base lg:leading-[26px] mx-auto">
+                <h2 className="fade text-justify  lg:text-start lg:opacity-0 mb-5 flex max-w-[370px] font-displayPro text-sm font-normal leading-6 text-blue-900 lg:mx-0 lg:max-w-[511px] lg:font-displayPro lg:text-base lg:leading-[26px] mx-auto">
                   <div>
                     <p>{data?.description}</p>
                   </div>

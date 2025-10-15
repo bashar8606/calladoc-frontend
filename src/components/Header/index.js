@@ -86,7 +86,7 @@ export default function Header({ data }) {
               </span>
             </SheetTrigger>
             <SheetContent side="left" className="px-0 h-full pt-0">
-              <div className="flex flex-col h-full">
+              <div className="flex flex-col h-full max-h-full overflow-y-auto">
                 {/* Logo inside Sheet */}
                 <div className="px-2.5 py-10 bg-gradient-to-br from-stone-200 to-[#6678ce] rounded-md">
                   <Link
@@ -115,13 +115,24 @@ export default function Header({ data }) {
         <ul className="pl-3 space-y-2">
       {item.sub.map((sub, j) => (
         <li key={j}>
-          <button
-            onClick={() => toggleAccordion(j)}
-            className="font-medium text-sm flex justify-between w-full text-left"
-          >
-            {sub.label}
-            <span className="ml-2">{openIndex === j ? "−" : "+"}</span>
-          </button>
+          {sub?.links?.length > 0 ? (
+            <button
+              onClick={() => toggleAccordion(j)}
+              className="font-medium text-sm flex justify-between w-full text-left"
+            >
+              {sub.label}
+              <span className="ml-2">{openIndex === j ? "−" : "+"}</span>
+            </button>
+          ) : (
+            <SheetClose asChild>
+              <Link
+                href={sub.url ?? "#"}
+                className="font-medium text-sm flex w-full text-left"
+              >
+                {sub.label}
+              </Link>
+            </SheetClose>
+          )}
 
           {sub?.links?.length > 0 && openIndex === j && (
             <ul className="pl-4 mt-1 space-y-1">
