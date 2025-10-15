@@ -1,4 +1,17 @@
 /** @type {import('next').NextConfig} */
+const isDev = process.env.NODE_ENV === 'development';
+
+const securityHeaders = [
+  {
+    key: 'Content-Security-Policy',
+    value: `
+      default-src 'self' http: https: data: blob: 'unsafe-inline' ${isDev ? "'unsafe-eval'" : ''};
+      connect-src 'self' https://tawk.to https://*.tawk.to https://*.twkwidget.com wss://tawk.to wss://*.tawk.to wss://*.twkwidget.com;
+    `.replace(/\s{2,}/g, ' ').trim(),
+  },
+];
+
+
 const nextConfig = {
     // async headers() {
     //   return [
@@ -36,6 +49,15 @@ const nextConfig = {
     //     }
     //   ]
     // },
+    
+    async headers() {
+      return [
+        {
+          source: "/(.*)",
+          headers: securityHeaders,
+        },
+      ];
+    },
     images: {
       remotePatterns: [
         {
