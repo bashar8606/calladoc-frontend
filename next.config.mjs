@@ -16,19 +16,47 @@ const nextConfig = {
   async headers() {
     return [
       {
-        // Apply headers to all routes
-        source: "/(.*)",
+        source: "/(.*)", // all routes
         headers: [
           {
             key: "Content-Security-Policy",
             value: `
               default-src 'self' https: data: blob: 'unsafe-inline';
-              script-src 'self' 'unsafe-inline' 'unsafe-eval' https://embed.tawk.to https://*.tawk.to;
-              connect-src 'self' https://*.tawk.to wss://*.tawk.to https://admin.calladoc.ae;
-              frame-src 'self' https://embed.tawk.to https://*.tawk.to;
-              img-src 'self' data: https:;
-              style-src 'self' 'unsafe-inline' https:;
-            `.replace(/\s{2,}/g, " "), // remove extra spaces/newlines
+
+              script-src 
+                'self' 
+                'unsafe-inline' 
+                'unsafe-eval' 
+                https://embed.tawk.to 
+                https://*.tawk.to 
+                https://admin.calladoc.ae;
+
+              connect-src 
+                'self' 
+                https://*.tawk.to 
+                wss://*.tawk.to 
+                https://admin.calladoc.ae;
+
+              frame-src 
+                'self' 
+                https://embed.tawk.to 
+                https://*.tawk.to 
+                https://admin.calladoc.ae;
+
+              img-src 
+                'self' 
+                data: 
+                https:;
+
+              style-src 
+                'self' 
+                'unsafe-inline' 
+                https:;
+
+              font-src 
+                'self' 
+                https:;
+            `.replace(/\s{2,}/g, " "), // clean extra spaces
           },
         ],
       },
