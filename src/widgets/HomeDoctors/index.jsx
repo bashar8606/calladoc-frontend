@@ -28,7 +28,7 @@ const HomeDoctors = ({ data, slug, ...props }) => {
     autoplay: true,
     modules: [Autoplay],
     slidesPerView: 1.2,
-    // modules: [Navigation],
+    modules: [Navigation],
     breakpoints: {
       640: {
         spaceBetween: 2,
@@ -42,8 +42,8 @@ const HomeDoctors = ({ data, slug, ...props }) => {
       },
     },
     navigation: {
-      prevEl: `.swiper-button-prev`,
-      nextEl: `.swiper-button-next`,
+      prevEl: `.sp3`,
+      nextEl: `.sn3`,
     },
   };
   return (
@@ -66,10 +66,10 @@ const HomeDoctors = ({ data, slug, ...props }) => {
           </div>
           <div className="">
             <div className="flex gap-2 lg:justify-end">
-              <button       aria-label="Previous Doctor" className="size-8 md:size-12 relative bg-white rounded-full border border-white flex items-center justify-center text-blue-600 text-2xl sp1">
+              <button       aria-label="Previous Doctor" className="size-8 md:size-12 relative bg-white rounded-full border border-white flex items-center justify-center text-blue-600 text-2xl sp3">
                 <IoIosArrowRoundBack />
               </button>
-              <button       aria-label="Next Doctor" className="size-8 md:size-12 relative bg-white rounded-full border border-white flex items-center justify-center text-blue-600 text-2xl sn1">
+              <button       aria-label="Next Doctor" className="size-8 md:size-12 relative bg-white rounded-full border border-white flex items-center justify-center text-blue-600 text-2xl sn3">
                 <IoIosArrowRoundForward />
               </button>
             </div>

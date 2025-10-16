@@ -200,7 +200,7 @@ export default function Header({ data }) {
           {/* Custom hover dropdown */}
           {openMenu === i && (
             <div
-              className="absolute left-0 top-full mt-2 w-56 max-h-[500px] overflow-y-auto bg-white shadow-lg rounded-md p-2"
+              className="absolute left-0 top-full mt-2 w-56  bg-white shadow-lg rounded-md p-2"
               onMouseEnter={() => {
                 if (timeoutRef.current) clearTimeout(timeoutRef.current);
               }}

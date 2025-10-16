@@ -29,7 +29,7 @@ const HomeBlogs = ({ data, slug, ...props }) => {
     autoplay: true,
     modules: [Autoplay],
     slidesPerView: 1.2,
-    // modules: [Navigation],
+    modules: [Navigation],
     breakpoints: {
       640: {
         spaceBetween: 2,
@@ -43,8 +43,8 @@ const HomeBlogs = ({ data, slug, ...props }) => {
       },
     },
     navigation: {
-      prevEl: `.swiper-button-prev`,
-      nextEl: `.swiper-button-next`,
+      prevEl: `.sp2`,
+      nextEl: `.sn2`,
     },
   };
   return (
@@ -68,13 +68,13 @@ const HomeBlogs = ({ data, slug, ...props }) => {
           <div className="">
             <div className="flex gap-2 lg:justify-end">
               <button 
-                className="size-8 md:size-12 relative bg-white rounded-full border border-white flex items-center justify-center text-blue-600 text-2xl sp1"
+                className="size-8 md:size-12 relative bg-white rounded-full border border-white flex items-center justify-center text-blue-600 text-2xl sp2"
                 aria-label="Previous blog posts"
               >
                 <IoIosArrowRoundBack />
               </button>
               <button 
-                className="size-8 md:size-12 relative bg-white rounded-full border border-white flex items-center justify-center text-blue-600 text-2xl sn1"
+                className="size-8 md:size-12 relative bg-white rounded-full border border-white flex items-center justify-center text-blue-600 text-2xl sn2"
                 aria-label="Next blog posts"
               >
                 <IoIosArrowRoundForward />
