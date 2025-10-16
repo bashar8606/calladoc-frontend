@@ -1,61 +1,34 @@
 "use client";
 
 import { RecoilRoot } from "recoil";
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-import fetcher from "@/utils/fetcher";
 import { SWRConfig } from "swr";
+import fetcher from "@/utils/fetcher";
+
+// Dynamically import Tawk with no SSR
+const TawkMessengerReact = dynamic(
+  () => import("@tawk.to/tawk-messenger-react"),
+  { ssr: false }
+);
 
 const GlobalProviders = ({ children }) => {
-  // ---- Local Storage provider for SWR cache ----
-  function localStorageProvider() {
-    if (typeof window !== "undefined") {
-      const map = new Map(JSON.parse(localStorage.getItem("app-cache") || "[]"));
-
-      window.addEventListener("beforeunload", () => {
-        const appCache = JSON.stringify(Array.from(map.entries()));
-        localStorage.setItem("app-cache", appCache);
-      });
-
-      return map;
-    }
-  }
-
-  // ---- Lazy load control for Tawk ----
   const [isTawkEnabled, setIsTawkEnabled] = useState(false);
 
+  // Lazy-load Tawk after idle (production only)
   useEffect(() => {
     if (typeof window === "undefined") return;
+    if (process.env.NODE_ENV !== "production") return;
 
     const enable = () => setIsTawkEnabled(true);
-
     if ("requestIdleCallback" in window) {
-      // @ts-ignore Safari fallback
+      // Safari types ignore
+      // @ts-ignore
       window.requestIdleCallback(enable, { timeout: 3000 });
     } else {
       setTimeout(enable, 2000);
     }
   }, []);
-
-  // ---- Load Tawk.to script only once ----
-  useEffect(() => {
-    if (!isTawkEnabled) return;
-    if (document.getElementById("tawkScript")) return;
-
-    const script = document.createElement("script");
-    script.id = "tawkScript";
-    script.async = true;
-    script.src = "https://embed.tawk.to/685bb3263e441e1910e8f100/1iuj37kfh";
-    script.charset = "UTF-8";
-    script.setAttribute("crossorigin", "*");
-    document.body.appendChild(script);
-
-    console.log("✅ Tawk script loaded");
-
-    return () => {
-      const existing = document.getElementById("tawkScript");
-      if (existing) existing.remove();
-    };
-  }, [isTawkEnabled]);
 
   return (
     <SWRConfig
@@ -64,13 +37,27 @@ const GlobalProviders = ({ children }) => {
         dedupingInterval: 10000,
         revalidateOnReconnect: false,
         fetcher: (resource, init) => fetcher(resource, init),
-        ...(typeof window !== "undefined" && {
-          provider: localStorageProvider,
-        }),
       }}
     >
       <RecoilRoot>
         {children}
+
+        {isTawkEnabled && (
+          <TawkMessengerReact
+            propertyId="685bb3263e441e1910e8f100" // your Tawk property ID
+            widgetId="1iuj37kfh"               // your Tawk widget ID
+            onBeforeLoad={() => console.log("Tawk is about to load")}
+            onStatusChange={(status) => console.log("Tawk status:", status)}
+            onChatHidden={() => console.log("Chat hidden")}
+            onChatMessageSystem={(message) =>
+              console.log("System message:", message)
+            }
+            onUnreadCountChanged={(count) =>
+              console.log("Unread count changed:", count)
+            }
+            onLoad={() => console.log("Tawk widget loaded")}
+          />
+        )}
       </RecoilRoot>
     </SWRConfig>
   );

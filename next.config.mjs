@@ -33,8 +33,8 @@ const nextConfig = {
 
               connect-src 
                 'self' 
-                https://*.tawk.to 
                 wss://*.tawk.to 
+                https://*.tawk.to 
                 https://admin.calladoc.ae;
 
               frame-src 
@@ -56,7 +56,7 @@ const nextConfig = {
               font-src 
                 'self' 
                 https:;
-            `.replace(/\s{2,}/g, " "), // clean extra spaces
+            `.replace(/\s{2,}/g, " "),
           },
         ],
       },
