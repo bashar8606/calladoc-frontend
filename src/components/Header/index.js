@@ -28,19 +28,15 @@ export default function Header({ data }) {
   const isInner = true;
   const isHeaderSmall = isInner || isScrollingDown;
 
-  // Track hover open states
   const [openMenu, setOpenMenu] = useState(null);
   const timeoutRef = useRef(null);
-
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleAccordion = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-
   const handleMouseEnter = (menuIndex) => {
-    // Clear any existing timeout
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
@@ -49,10 +45,9 @@ export default function Header({ data }) {
   };
 
   const handleMouseLeave = () => {
-    // Set a timeout before closing the menu
     timeoutRef.current = setTimeout(() => {
       setOpenMenu(null);
-    }, 150); // 150ms delay
+    }, 200);
   };
 
   return (
@@ -63,7 +58,7 @@ export default function Header({ data }) {
       }`}
       ref={main}
     >
-      <div className="shadow-s z-50  relative py-3 md:py-2">
+      <div className="shadow-s z-50 relative py-3 md:py-2">
         <div className="container mx-auto flex justify-between items-center px-4 md:px-6">
           {/* Logo */}
           <Link
@@ -87,7 +82,6 @@ export default function Header({ data }) {
             </SheetTrigger>
             <SheetContent side="left" className="px-0 h-full pt-0">
               <div className="flex flex-col h-full max-h-full overflow-y-auto">
-                {/* Logo inside Sheet */}
                 <div className="px-2.5 py-10 bg-gradient-to-br from-stone-200 to-[#6678ce] rounded-md">
                   <Link
                     href="/"
@@ -102,7 +96,6 @@ export default function Header({ data }) {
                   </Link>
                 </div>
 
-                {/* Accordion for nested menus */}
                 <div className="px-3">
                 <Accordion type="single" collapsible className="w-full">
   {data?.menu?.map((item, i) =>
@@ -176,86 +169,107 @@ export default function Header({ data }) {
           </Sheet>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex ms-auto">
-            <nav className="space-x-5 flex items-center">
-              {data?.menu?.map((item, i) =>
-                item?.sub?.length > 0 ? (
-                  <DropdownMenu
-                    key={i}
-                    open={openMenu === i}
-                    onOpenChange={(open) => {
-                      if (!open) {
-                        setOpenMenu(null);
-                      }
-                    }}
-                  >
-                    <DropdownMenuTrigger
-                      className={`text-sm font-medium px-3 py-2 rounded-md ${
-                        isHeaderSmall
-                          ? "text-gray-900 hover:text-blue-600"
-                          : "text-white hover:text-blue-600"
-                      }`}
-                      onMouseEnter={() => handleMouseEnter(i)}
-                      onMouseLeave={handleMouseLeave}
-                    >
-                      {item.label}
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent
-                      className="w-56"
-                      onMouseEnter={() => handleMouseEnter(i)}
-                      onMouseLeave={handleMouseLeave}
-                    >
-                      {item.sub.map((sub) =>
-                        sub?.links?.length > 0 ? (
-                          <DropdownMenuSub key={sub.id}>
-                            <DropdownMenuSubTrigger>
-                              {sub.label}
-                            </DropdownMenuSubTrigger>
-                            <DropdownMenuSubContent>
-                              {sub.links.map((link) => (
-                                <DropdownMenuItem key={link.id} asChild>
-                                  <Link href={link.url ?? "#"}>
-                                    {link.label}
-                                  </Link>
-                                </DropdownMenuItem>
-                              ))}
-                            </DropdownMenuSubContent>
-                          </DropdownMenuSub>
-                        ) : (
-                          <DropdownMenuItem key={sub.id} asChild>
-                            <Link href={sub.url ?? "#"}>{sub.label}</Link>
-                          </DropdownMenuItem>
-                        )
-                      )}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+      {/* Desktop Menu */}
+<div className="hidden lg:flex ms-auto">
+  <nav className="space-x-5 flex items-center">
+    {data?.menu?.map((item, i) =>
+      item?.sub?.length > 0 ? (
+        <div
+          key={i}
+          className="relative"
+          onMouseEnter={() => {
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+            setOpenMenu(i);
+          }}
+          onMouseLeave={() => {
+            timeoutRef.current = setTimeout(() => {
+              setOpenMenu(null);
+            }, 150);
+          }}
+        >
+          <button
+            className={`text-sm font-medium px-3 py-2 rounded-md transition-colors ${
+              isHeaderSmall
+                ? "text-gray-900 hover:text-blue-600"
+                : "text-white hover:text-blue-600"
+            }`}
+          >
+            {item.label}
+          </button>
+
+          {/* Custom hover dropdown */}
+          {openMenu === i && (
+            <div
+              className="absolute left-0 top-full mt-2 w-56 max-h-[500px] overflow-y-auto bg-white shadow-lg rounded-md p-2"
+              onMouseEnter={() => {
+                if (timeoutRef.current) clearTimeout(timeoutRef.current);
+              }}
+              onMouseLeave={() => {
+                timeoutRef.current = setTimeout(() => {
+                  setOpenMenu(null);
+                }, 150);
+              }}
+            >
+              {item.sub.map((sub) =>
+                sub?.links?.length > 0 ? (
+                  <div key={sub.id} className="group relative">
+                    <div className="px-3 py-2 font-medium text-sm text-gray-800 group-hover:text-blue-600 cursor-default flex justify-between items-center">
+                      {sub.label}
+                      <span>›</span>
+                    </div>
+                    <div className="absolute left-full top-0 mt-0 ml-1 hidden group-hover:block bg-white shadow-md rounded-md w-48">
+                      {sub.links.map((link) => (
+                        <Link
+                          key={link.id}
+                          href={link.url ?? "#"}
+                          className="block px-3 py-2 text-xs text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 ) : (
                   <Link
-                    key={i}
-                    href={item.url ?? "#"}
-                    className={`rounded-md text-nowrap xl:px-2 2xl:px-3 py-2 text-sm font-medium transition-colors focus:outline-none ${
-                      isHeaderSmall
-                        ? "text-gray-900 hover:text-blue-600"
-                        : "text-white hover:text-blue-600"
-                    }`}
+                    key={sub.id}
+                    href={sub.url ?? "#"}
+                    className="block px-3 py-2 text-gray-700 text-sm hover:text-blue-600 hover:bg-blue-50 rounded-md"
                   >
-                    {item.label}
+                    {sub.label}
                   </Link>
                 )
               )}
+            </div>
+          )}
+        </div>
+      ) : (
+        <Link
+          key={i}
+          href={item.url ?? "#"}
+          className={`rounded-md text-nowrap xl:px-2 2xl:px-3 py-2 text-sm font-medium transition-colors focus:outline-none ${
+            isHeaderSmall
+              ? "text-gray-900 hover:text-blue-600"
+              : "text-white hover:text-blue-600"
+          }`}
+        >
+          {item.label}
+        </Link>
+      )
+    )}
 
-              {/* Contact Us Button */}
-              <Link
-                href="https://calladoc.okadoc.com/en-ae/search/result"
-                target="_blank"
-                className={`btn ${
-                  isHeaderSmall ? "btn-primary" : "btn-white"
-                } text-nowrap`}
-              >
-                Book Now
-              </Link>
-            </nav>
-          </div>
+    {/* Contact Us Button */}
+    <Link
+      href="https://calladoc.okadoc.com/en-ae/search/result"
+      target="_blank"
+      className={`btn ${
+        isHeaderSmall ? "btn-primary" : "btn-white"
+      } text-nowrap`}
+    >
+      Book Now
+    </Link>
+  </nav>
+</div>
+
         </div>
       </div>
     </header>
