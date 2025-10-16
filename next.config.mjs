@@ -13,51 +13,27 @@ const isDev = process.env.NODE_ENV === 'development';
 
 
 const nextConfig = {
-    // async headers() {
-    //   return [
-    //     {
-    //       source: '/(.*)',
-    //       headers: [
-    //         {
-    //           key: 'Content-Security-Policy',
-    //           value: `
-    //             script-src 'self' 'unsafe-inline' 'unsafe-eval' https://embed.tawk.to https://*.tawk.to https://cdn.jsdelivr.net;
-    //             img-src 'self' 
-    //               https://embed.tawk.to 
-    //               https://*.tawk.to 
-    //               https://cdn.jsdelivr.net 
-    //               https://admin.calladoc.ae 
-    //               https://admin.calladoc.ae/api/service-categories
-    //               https://40.172.190.110:1337
-    //               data: blob:;
-    //             font-src 'self' 
-    //               https://embed.tawk.to 
-    //               https://*.tawk.to 
-    //               https://*.tawkto.net 
-    //               data:;
-    //             connect-src 'self' 
-    //               https://*.tawk.to 
-    //               https://*.tawkto.net 
-    //               wss://*.tawk.to 
-    //               wss://*.tawkto.net;
-    //             style-src 'self' 'unsafe-inline' 
-    //               https://embed.tawk.to 
-    //               https://*.tawk.to;
-    //           `.replace(/\s+/g, ' ').trim()
-    //         }
-    //       ]
-    //     }
-    //   ]
-    // },
-    
-    // async headers() {
-    //   return [
-    //     {
-    //       source: "/(.*)",
-    //       headers: securityHeaders,
-    //     },
-    //   ];
-    // },
+  async headers() {
+    return [
+      {
+        // Apply headers to all routes
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: `
+              default-src 'self' https: data: blob: 'unsafe-inline';
+              script-src 'self' 'unsafe-inline' 'unsafe-eval' https://embed.tawk.to https://*.tawk.to;
+              connect-src 'self' https://*.tawk.to wss://*.tawk.to https://admin.calladoc.ae;
+              frame-src 'self' https://embed.tawk.to https://*.tawk.to;
+              img-src 'self' data: https:;
+              style-src 'self' 'unsafe-inline' https:;
+            `.replace(/\s{2,}/g, " "), // remove extra spaces/newlines
+          },
+        ],
+      },
+    ];
+  },
     images: {
       remotePatterns: [
         {
