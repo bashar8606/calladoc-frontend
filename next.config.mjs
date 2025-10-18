@@ -53,6 +53,20 @@ const nextConfig = {
   //     },
   //   ];
   // },
+  
+  headers: async () => {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self' http: https: data: blob: 'unsafe-inline'; connect-src 'self' http: https: data: blob: wss://tawk.to wss://*.tawk.to https://tawk.to https://*.tawk.to",
+          },
+        ],
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
