@@ -2,57 +2,57 @@
 const isDev = process.env.NODE_ENV === 'development';
 
 const nextConfig = {
-  async headers() {
-    return [
-      {
-        source: "/(.*)", // all routes
-        headers: [
-          {
-            key: "Content-Security-Policy",
-            value: `
-              default-src 'self' https: data: blob: 'unsafe-inline';
+  // async headers() {
+  //   return [
+  //     {
+  //       source: "/(.*)", // all routes
+  //       headers: [
+  //         {
+  //           key: "Content-Security-Policy",
+  //           value: `
+  //             default-src 'self' https: data: blob: 'unsafe-inline';
 
-              script-src 
-                'self' 
-                'unsafe-inline' 
-                'unsafe-eval' 
-                https://embed.tawk.to 
-                https://*.tawk.to 
-                https://admin.calladoc.ae;
+  //             script-src 
+  //               'self' 
+  //               'unsafe-inline' 
+  //               'unsafe-eval' 
+  //               https://embed.tawk.to 
+  //               https://*.tawk.to 
+  //               https://admin.calladoc.ae;
 
-              connect-src 
-                'self' 
-                http: 
-                https: 
-                wss://*.tawk.to 
-                https://*.tawk.to 
-                https://admin.calladoc.ae;
+  //             connect-src 
+  //               'self' 
+  //               http: 
+  //               https: 
+  //               wss://*.tawk.to 
+  //               https://*.tawk.to 
+  //               https://admin.calladoc.ae;
 
-              frame-src 
-                'self' 
-                https://embed.tawk.to 
-                https://*.tawk.to 
-                https://admin.calladoc.ae;
+  //             frame-src 
+  //               'self' 
+  //               https://embed.tawk.to 
+  //               https://*.tawk.to 
+  //               https://admin.calladoc.ae;
 
-              img-src 
-                'self' 
-                data: 
-                https:;
+  //             img-src 
+  //               'self' 
+  //               data: 
+  //               https:;
 
-              style-src 
-                'self' 
-                'unsafe-inline' 
-                https:;
+  //             style-src 
+  //               'self' 
+  //               'unsafe-inline' 
+  //               https:;
 
-              font-src 
-                'self' 
-                https:;
-            `.replace(/\s{2,}/g, " "),
-          },
-        ],
-      },
-    ];
-  },
+  //             font-src 
+  //               'self' 
+  //               https:;
+  //           `.replace(/\s{2,}/g, " "),
+  //         },
+  //       ],
+  //     },
+  //   ];
+  // },
   images: {
     remotePatterns: [
       {
