@@ -54,19 +54,19 @@ const nextConfig = {
   //   ];
   // },
   
-  headers: async () => {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'Content-Security-Policy',
-            value: "default-src 'self' http: https: data: blob: 'unsafe-inline'; connect-src 'self' http: https: data: blob: ws: wss: wss://tawk.to wss://*.tawk.to https://tawk.to https://*.tawk.to; script-src 'self' 'unsafe-inline' https://embed.tawk.to; frame-src 'self' https://embed.tawk.to",
-          },
-        ],
-      },
-    ];
-  },
+  // headers: async () => {
+  //   return [
+  //     {
+  //       source: '/(.*)',
+  //       headers: [
+  //         {
+  //           key: 'Content-Security-Policy',
+  //           value: "default-src 'self' http: https: data: blob: 'unsafe-inline'; connect-src 'self' http: https: data: blob: ws: wss: wss://tawk.to wss://*.tawk.to https://tawk.to https://*.tawk.to; script-src 'self' 'unsafe-inline' https://embed.tawk.to; frame-src 'self' https://embed.tawk.to",
+  //         },
+  //       ],
+  //     },
+  //   ];
+  // },
   images: {
     remotePatterns: [
       {

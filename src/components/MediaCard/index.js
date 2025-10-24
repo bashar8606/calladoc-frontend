@@ -14,7 +14,7 @@ export default function MediaCard({ data, isSm = false, isLg = false, isPopular 
   )}
 
   {isPopular ? "" : (
-    <div className="aspect-[470/263] relative bg-white w-full rounded-2xl overflow-hidden">
+    <div className="aspect-[470/283] relative bg-white w-full rounded-2xl overflow-hidden">
       {data?.cover?.url && (
           <Image
             src={data?.cover?.url}
@@ -26,7 +26,7 @@ export default function MediaCard({ data, isSm = false, isLg = false, isPopular 
       }
     </div>
   )}
-  <div className={`flex flex-col justify-between relative z-20 h-full ${isSm ? "pt-3 pb-4" : isPopular ? "pt-6 pb-4" : "pt-4 pb-8"}`}>
+  <div className={` relative z-20 ${isSm ? "pt-3 pb-4" : isPopular ? "pt-6 pb-4" : "pt-4 pb-8"}`}>
     <div>
       <p className=" text-base leading-none mb-3 text-blue-600 font-medium">{data?.category?.name}</p>
       <h4 className={`text-black font-normal leading-normal line-clamp-2 ${isSm ? "text-lg" : isLg ? "text-3xl" : "text-xl mb-3"}`}>

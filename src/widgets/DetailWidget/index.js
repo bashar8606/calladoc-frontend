@@ -177,13 +177,13 @@ function DynamicBlocks({ blocks }) {
       {blocks.map((block, index) => {
         switch (block.__component) {
           case "shared.rich-text":
-            return <RichTextBlock key={block.id || index} body={block.body} />
+            return <RichTextBlock key={`3${index}`} body={block.body} />
           case "shared.quote":
-            return <QuoteBlock key={block.id || index} title={block.title} body={block.body} />
+            return <QuoteBlock key={`2${index}`} title={block.title} body={block.body} />
           case "shared.media":
-            return <MediaBlock key={block.id || index} file={block.file} />
+            return <MediaBlock key={`1${index}`} file={block.file} />
           case "shared.slider":
-            return <SliderBlock key={block.id || index} files={block.files} />
+            return <SliderBlock key={`q${index}`} files={block.files} />
           default:
             return null
         }
@@ -252,36 +252,36 @@ export default function DetailWidget({ data }) {
 
 
           <div className="flex items-center gap-4 mb-4">
-            <div variant="secondary" className="capitalize">
-              {blogData.category.name}
-            </div>
+          {blogData?.category?.name&&<div variant="secondary" className="capitalize">
+              {blogData?.category?.name}
+            </div>}
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Calendar className="w-4 h-4" />
-              <span>{formatDate(blogData.createdAt)}</span>
+              <span>{formatDate(blogData?.createdAt)}</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <User className="w-4 h-4" />
-              <span>{blogData.author.name}</span>
+              <span>{blogData?.author?.name}</span>
             </div>
           </div>
 
-          <h1 className="text-4xl font-bold mb-4 leading-tight">{blogData.title}</h1>
+          <h1 className="text-4xl font-bold mb-4 leading-tight">{blogData?.title}</h1>
 
-          <p className="text-xl text-muted-foreground mb-6">{blogData.description}</p>
+          <p className="text-xl text-muted-foreground mb-6">{blogData?.description}</p>
         </div>
 
         {/* Cover Image */}
-        {blogData.cover && (
+        {blogData?.cover && (
           <div className="mb-8">
-                 <div className="aspect-[1454/548] bg-slate-200 relative rounded-2xl overflow-hidden shadow-lg">
+                 <div className="aspect-[1454/770] bg-slate-200 relative rounded-2xl overflow-hidden shadow-lg">
             <Image
             fill
-              src={blogData.cover?.url}
-              alt={blogData.cover.alternativeText || blogData.title}
+              src={blogData?.cover?.url}
+              alt={blogData.cover?.alternativeText || blogData?.title}
               className="object-cover "
             />
              </div>
-            {blogData.cover.caption && (
+            {blogData?.cover?.caption && (
               <p className="text-sm text-muted-foreground mt-2 text-center italic">{blogData.cover.caption}</p>
             )}
           </div>
@@ -289,7 +289,7 @@ export default function DetailWidget({ data }) {
 
         {/* Dynamic Content Blocks */}
         <article className="prose prose-lg max-w-none">
-          <DynamicBlocks blocks={blogData.blocks} />
+          <DynamicBlocks blocks={blogData?.blocks} />
         </article>
 
         {/* Author Info */}
@@ -297,11 +297,11 @@ export default function DetailWidget({ data }) {
           <CardContent className="p-6">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-semibold">
-                {blogData.author.name.charAt(0)}
+                {blogData?.author?.name.charAt(0)}
               </div>
               <div>
-                <h3 className="font-semibold">{blogData.author.name}</h3>
-                <p className="text-sm text-muted-foreground">{blogData.author.email}</p>
+                <h3 className="font-semibold">{blogData?.author?.name}</h3>
+                <p className="text-sm text-muted-foreground">{blogData?.author?.email}</p>
               </div>
             </div>
           </CardContent>
