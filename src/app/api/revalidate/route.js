@@ -16,10 +16,11 @@ export async function POST(req) {
     revalidatePath('/')
     revalidatePath('/about-us')
     revalidatePath('/contact')
-    revalidatePath('/media')
+    revalidatePath('/blogs')
     revalidatePath('/legal')
-    revalidatePath('/media/[slug]', 'page')
-    revalidatePath('/leaders/[slug]', 'page')
+    revalidatePath('/blogs/[slug]', 'page')
+    revalidatePath('/doctors/[slug]', 'page')
+    revalidatePath('/doctors', 'page')
     revalidatePath('/[slug]', 'page')
     
     console.log(`Revalidated path: ${pathToRevalidate}`);

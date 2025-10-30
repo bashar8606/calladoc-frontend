@@ -114,7 +114,10 @@ function RichTextBlock({ body }) {
       .replace(/- (.*)/g, '<li class="ml-4">$1</li>')
       .replace(/\[([^\]]+)\]$$([^)]+)$$/g, '<a href="$2" class="text-blue-600 hover:underline">$1</a>')
   }
-
+//   return <div
+//   className="prose prose-lg max-w-none mb-6 prose-headings:font-semibold prose-a:text-blue-600 prose-a:hover:underline"
+//   dangerouslySetInnerHTML={{ __html: body }}
+// />
   return <div className="prose prose-lg max-w-none mb-6" dangerouslySetInnerHTML={{ __html: parseMarkdown(body) }} />
 }
 

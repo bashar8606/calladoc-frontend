@@ -86,31 +86,60 @@ export default function Footer({ data }) {
                   MOH : AO7DVRGA-181224
                 </p>
 
-                <Link
-                  href="/"
-                  className={`block aspect-[100/35]   relative duration-300 ease-out w-[120px]  lg:w-[190px]`}
-                >
-                  <Image
-                    src={"/images/Dubai_Health_Authority_logo.webp"}
-                    className="object-contain filter brightness-0 invert"
-                    fill
-                    alt="udf logo"
-                  />
-                </Link>
-
-                <Link
-                  href="/"
-                  className={`block aspect-[100/35] mt-5 rounded-2xl overflow-hidden   relative duration-300 ease-out w-[120px]  lg:w-[190px]`}
-                >
-                  <Image
-                    src={"/images/mohap.webp"}
-                    className="object-contain "
-                    fill
-                    alt="udf logo"
-                  />
-                </Link>
+              
               </div>
             </div>
+
+
+          <div className="grid grid-cols-2 md:grid-cols-4 mt-4">
+            <Link
+              href="/"
+              className="block aspect-[100/35] relative duration-300 ease-out w-[140px] lg:w-[190px]"
+            >
+              <Image
+                src={"/images/Dubai_Health_Authority_logo.webp"}
+                className="object-contain filter brightness-0 invert"
+                fill
+                alt="udf logo"
+              />
+            </Link>
+
+            <Link
+              href="/"
+              className="block aspect-[100/35] mt-5 rounded-2xl overflow-hidden relative duration-300 ease-out w-[140px] lg:w-[190px]"
+            >
+              <Image
+                src={"/images/mohap.webp"}
+                className="object-contain"
+                fill
+                alt="udf logo"
+              />
+            </Link>
+
+            <Link
+              href="/"
+              className="block aspect-[100/35] mt-5 rounded-2xl overflow-hidden relative duration-300 ease-out w-[140px] lg:w-[190px]"
+            >
+              <Image
+                src={"/images/g5.png"}
+                className="object-contain brightness-0 invert"
+                fill
+                alt="G5 logo"
+              />
+            </Link>
+
+            <Link
+              href="/"
+              className="block aspect-[100/35] mt-5 rounded-2xl overflow-hidden relative duration-300 ease-out w-[140px] lg:w-[190px]"
+            >
+              <Image
+                src={"/images/hipaa_blue.png"}
+                className="object-contain brightness-0 invert"
+                fill
+                alt="HIPAA Blue logo"
+              />
+            </Link>
+          </div>
           </div>
         </div>
       </div>
