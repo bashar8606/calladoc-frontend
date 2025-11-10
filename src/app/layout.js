@@ -6,13 +6,13 @@ import Footer from "@/components/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import nextFetch from "@/utils/nextFetch";
 import { GLOBAL } from "@/constants/apiRoutes";
-import { DM_Sans, DM_Serif_Display } from "next/font/google";
+import { Lato , DM_Serif_Display} from "next/font/google";
 
 
-const dmSans = DM_Sans({
+const dmSans = Lato({
   subsets: ["latin"],
   variable: "--font-dm-sans",
-  weight: ["variable"],
+  weight: ["300", "400", "700"],
 });
 
 const dmSerif = DM_Serif_Display({

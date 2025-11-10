@@ -58,7 +58,7 @@ const HomeTestimonials = ({ data, slug, ...props }) => {
             <h2 className=" text-[#2463eb]  text-sm md:text-lg uppercase 2xl:text-2xl font-medium tracking-wider  leading-normal mb-2">
               {data?.title}
             </h2>
-            <h3 className="text-sky-900 font-dmSerif  text-3xl md:text-5xl xl:text-6xl font-light max-w-[14ch]">
+            <h3 className="text-sky-900 font-dmSerif  text-3xl md:text-5xl xl:text-6xl font-bold  max-w-[14ch]">
               {data?.titleMain}
             </h3>
           </div>

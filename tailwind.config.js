@@ -40,7 +40,7 @@ export default {
   				'sans-serif'
   			],
         dmSerif: [
-  				'var(--font-dm-serif)',
+  				'var(--font-dm-sans)',
   				'sans-serif'
   			]
   		},

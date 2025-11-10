@@ -17,7 +17,7 @@ const HomeFaq = ({ data, slug, ...props }) => {
           <h2 className="  text-sm md:text-lg  text-[#2463eb] text-center uppercase 2xl:text-2xl font-semibold tracking-wider  leading-normal mb-2">
             {data?.title}
           </h2>
-          <h3 className="text-sky-900 text-center mx-auto font-dmSerif  text-3xl  md:text-5xl xl:text-6xl font-light max-w-[22ch]">
+          <h3 className="text-sky-900 text-center mx-auto font-dmSerif  text-3xl  md:text-5xl xl:text-6xl font-bold  max-w-[22ch]">
             {data?.titleMain}
           </h3>
         </div>

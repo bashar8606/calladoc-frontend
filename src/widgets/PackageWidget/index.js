@@ -66,7 +66,7 @@ const PackageWidget = ({ data, slug, ...props }) => {
           <h2 className="  text-lg text-[#2463eb] text-center uppercase 2xl:text-2xl font-semibold tracking-wider  leading-normal mb-2">
             {data?.title}
           </h2>
-          <h3 className="text-sky-900 text-center mx-auto font-dmSerif  text-5xl xl:text-6xl font-light max-w-[14ch]">
+          <h3 className="text-sky-900 text-center mx-auto font-dmSerif  text-5xl xl:text-6xl font-bold  max-w-[14ch]">
             {data?.titleMain}
           </h3>
         </div>
