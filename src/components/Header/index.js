@@ -10,15 +10,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Link from "next/link";
@@ -49,6 +41,33 @@ export default function Header({ data }) {
       setOpenMenu(null);
     }, 200);
   };
+
+
+  const timeoutRefParent = useRef(null);
+const timeoutRefChild = useRef(null);
+
+const handleParentEnter = (i) => {
+  if (timeoutRefParent.current) clearTimeout(timeoutRefParent.current);
+  setOpenMenu(i);
+};
+
+const handleParentLeave = () => {
+  timeoutRefParent.current = setTimeout(() => {
+    setOpenMenu(null);
+  }, 300);
+};
+
+const handleChildEnter = () => {
+  if (timeoutRefParent.current) clearTimeout(timeoutRefParent.current);
+  if (timeoutRefChild.current) clearTimeout(timeoutRefChild.current);
+};
+
+const handleChildLeave = () => {
+  timeoutRefChild.current = setTimeout(() => {
+    setOpenMenu(null);
+  }, 300);
+};
+
 
   return (
     <>
@@ -175,73 +194,65 @@ export default function Header({ data }) {
     {data?.menu?.map((item, i) =>
       item?.sub?.length > 0 ? (
         <div
-          key={i}
-          className="relative"
-          onMouseEnter={() => {
-            if (timeoutRef.current) clearTimeout(timeoutRef.current);
-            setOpenMenu(i);
-          }}
-          onMouseLeave={() => {
-            timeoutRef.current = setTimeout(() => {
-              setOpenMenu(null);
-            }, 150);
-          }}
+        key={i}
+        className="relative"
+        onMouseEnter={() => handleParentEnter(i)}
+        onMouseLeave={handleParentLeave}
+      >
+        <button
+          className={`text-sm font-medium px-3 py-2 rounded-md transition-colors ${
+            isHeaderSmall
+              ? "text-gray-900 hover:text-blue-600"
+              : "text-white hover:text-blue-600"
+          }`}
         >
-          <button
-            className={`text-sm font-medium px-3 py-2 rounded-md transition-colors ${
-              isHeaderSmall
-                ? "text-gray-900 hover:text-blue-600"
-                : "text-white hover:text-blue-600"
-            }`}
+          {item.label}
+        </button>
+      
+        {openMenu === i && (
+          <div
+            className="absolute left-0 top-full mt-2 w-56 bg-white shadow-lg rounded-md p-0"
+            onMouseEnter={handleChildEnter}
+            onMouseLeave={handleChildLeave}
           >
-            {item.label}
-          </button>
-
-          {/* Custom hover dropdown */}
-          {openMenu === i && (
-            <div
-              className="absolute left-0 top-full mt-2 w-56  bg-white shadow-lg rounded-md p-2"
-              onMouseEnter={() => {
-                if (timeoutRef.current) clearTimeout(timeoutRef.current);
-              }}
-              onMouseLeave={() => {
-                timeoutRef.current = setTimeout(() => {
-                  setOpenMenu(null);
-                }, 150);
-              }}
-            >
-              {item.sub.map((sub) =>
-                sub?.links?.length > 0 ? (
-                  <div key={sub.id} className="group relative">
-                    <div className="px-3 py-2 font-medium text-sm text-gray-800 group-hover:text-blue-600 cursor-default flex justify-between items-center">
-                      {sub.label}
-                      <span>›</span>
-                    </div>
-                    <div className="absolute left-full top-0 mt-0 ml-1 hidden group-hover:block bg-white shadow-md rounded-md w-48">
-                      {sub.links.map((link) => (
-                        <Link
-                          key={link.id}
-                          href={link.url ?? "#"}
-                          className="block px-3 py-2 text-xs text-gray-700 hover:bg-blue-50 hover:text-blue-600"
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  <Link
-                    key={sub.id}
-                    href={sub.url ?? "#"}
-                    className="block px-3 py-2 text-gray-700 text-sm hover:text-blue-600 hover:bg-blue-50 rounded-md"
-                  >
+            {item.sub.map((sub) =>
+              sub?.links?.length > 0 ? (
+                <div key={sub.id} className="group relative">
+                  <div className="px-3 py-2 font-medium text-sm text-gray-800 group-hover:text-blue-600 cursor-default flex justify-between items-center">
                     {sub.label}
-                  </Link>
-                )
-              )}
-            </div>
-          )}
-        </div>
+                    <span>›</span>
+                  </div>
+      
+                  <div
+                    className="absolute left-full top-0 mt-0 hidden group-hover:block bg-white shadow-md rounded-md w-48"
+                    onMouseEnter={handleChildEnter}
+                    onMouseLeave={handleChildLeave}
+                  >
+                    {sub.links.map((link) => (
+                      <Link
+                        key={link.id}
+                        href={link.url ?? "#"}
+                        className="block px-3 py-2 text-xs text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={sub.id}
+                  href={sub.url ?? "#"}
+                  className="block px-3 py-2 text-gray-700 text-sm hover:text-blue-600 hover:bg-blue-50 rounded-md"
+                >
+                  {sub.label}
+                </Link>
+              )
+            )}
+          </div>
+        )}
+      </div>
+      
       ) : (
         <Link
           key={i}
