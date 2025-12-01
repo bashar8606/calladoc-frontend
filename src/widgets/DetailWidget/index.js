@@ -106,20 +106,22 @@ import { IoHomeOutline } from "react-icons/io5";
 
 // Component to render rich text with basic markdown support
 function RichTextBlock({ body }) {
-  // Simple markdown parsing for demonstration
-  const parseMarkdown = (text) => {
+  const parseMarkdown = (text = "") => {
     return text
       .replace(/## (.*)/g, '<h2 class="text-2xl font-bold mb-4 mt-6">$1</h2>')
       .replace(/\*(.*?)\*/g, "<em>$1</em>")
       .replace(/- (.*)/g, '<li class="ml-4">$1</li>')
-      .replace(/\[([^\]]+)\]$$([^)]+)$$/g, '<a href="$2" class="text-blue-600 hover:underline">$1</a>')
-  }
-//   return <div
-//   className="prose prose-lg max-w-none mb-6 prose-headings:font-semibold prose-a:text-blue-600 prose-a:hover:underline"
-//   dangerouslySetInnerHTML={{ __html: body }}
-// />
-  return <div className="prose prose-lg max-w-none mb-6" dangerouslySetInnerHTML={{ __html: parseMarkdown(body) }} />
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-blue-600 hover:underline">$1</a>');
+  };
+
+  return (
+    <div
+      className="prose prose-lg max-w-none mb-6"
+      dangerouslySetInnerHTML={{ __html: parseMarkdown(body || "") }}
+    />
+  );
 }
+
 
 // Component to render quote blocks
 function QuoteBlock({ title, body }) {
@@ -180,7 +182,7 @@ function DynamicBlocks({ blocks }) {
       {blocks.map((block, index) => {
         switch (block.__component) {
           case "shared.rich-text":
-            return <RichTextBlock key={`3${index}`} body={block.body} />
+            return <RichTextBlock key={`3${index}`} body={block.body1} />
           case "shared.quote":
             return <QuoteBlock key={`2${index}`} title={block.title} body={block.body} />
           case "shared.media":
@@ -265,7 +267,7 @@ export default function DetailWidget({ data }) {
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <User className="w-4 h-4" />
               <span>{blogData?.author?.name}</span>
-            </div>
+            </div>  
           </div>
 
           <h1 className="text-4xl font-bold mb-4 leading-tight">{blogData?.title}</h1>
