@@ -66,10 +66,10 @@ const HomeDoctors = ({ data, slug, ...props }) => {
           </div>
           <div className="">
             <div className="flex gap-2 lg:justify-end">
-              <button       aria-label="Previous Doctor" className="size-8 md:size-12 relative bg-white rounded-full border border-white flex items-center justify-center text-blue-600 text-2xl sp3">
+              <button aria-label="Previous Doctor" className="size-8 md:size-12 relative bg-white rounded-full border border-white flex items-center justify-center text-blue-600 text-2xl sp3">
                 <IoIosArrowRoundBack />
               </button>
-              <button       aria-label="Next Doctor" className="size-8 md:size-12 relative bg-white rounded-full border border-white flex items-center justify-center text-blue-600 text-2xl sn3">
+              <button aria-label="Next Doctor" className="size-8 md:size-12 relative bg-white rounded-full border border-white flex items-center justify-center text-blue-600 text-2xl sn3">
                 <IoIosArrowRoundForward />
               </button>
             </div>
@@ -79,7 +79,7 @@ const HomeDoctors = ({ data, slug, ...props }) => {
         <Slider className={"mb-8 lg:mb-14"} customSettings={customSettings}>
           {data?.items?.map((item, i) => {
             return (
-              <SwiperSlide key={i} className="">
+              <SwiperSlide key={`${i}-docttk`} className="">
                 <DoctorCard data={item} title="sfdsdf" />
               </SwiperSlide>
             );
@@ -87,8 +87,8 @@ const HomeDoctors = ({ data, slug, ...props }) => {
         </Slider>
 
         <div className="text-center">
-          {data?.link?.url&&
-        <ExploreLink aria-label={data?.link?.label} href={data?.link?.url}>{data?.link?.label}</ExploreLink>}
+          {data?.link?.url &&
+            <ExploreLink aria-label={data?.link?.label} href={data?.link?.url}>{data?.link?.label}</ExploreLink>}
         </div>
       </div>
     </section>

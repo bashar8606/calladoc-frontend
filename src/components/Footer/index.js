@@ -2,7 +2,7 @@
 import { FaFacebookF, FaYoutube } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
 import { FaLinkedinIn } from "react-icons/fa6";
-import { FaInstagram, FaTiktok,FaPinterest } from "react-icons/fa";
+import { FaInstagram, FaTiktok, FaPinterest } from "react-icons/fa";
 import { LiaSnapchat } from "react-icons/lia";
 import Image from "../Image/image";
 import Link from "next/link";
@@ -83,63 +83,63 @@ export default function Footer({ data }) {
                   We are licensed as follows
                 </h3>
                 <p className="text-white/50 text-sm font-semibold  mb-4">
-                  MOH : AO7DVRGA-181224
+                  MOH :  CGFWFLD3-070126
                 </p>
 
-              
+
               </div>
             </div>
 
 
-          <div className="grid grid-cols-2 md:grid-cols-4 mt-4">
-            <Link
-              href="/"
-              className="block aspect-[100/35] relative duration-300 ease-out w-[140px] lg:w-[190px]"
-            >
-              <Image
-                src={"/images/Dubai_Health_Authority_logo.webp"}
-                className="object-contain filter brightness-0 invert"
-                fill
-                alt="udf logo"
-              />
-            </Link>
+            <div className="grid grid-cols-2 md:grid-cols-4 mt-4">
+              <Link
+                href="/"
+                className="block aspect-[100/35] relative duration-300 ease-out w-[140px] lg:w-[190px]"
+              >
+                <Image
+                  src={"/images/Dubai_Health_Authority_logo.webp"}
+                  className="object-contain filter brightness-0 invert"
+                  fill
+                  alt="udf logo"
+                />
+              </Link>
 
-            <Link
-              href="/"
-              className="block aspect-[100/35] mt-5 rounded-2xl overflow-hidden relative duration-300 ease-out w-[140px] lg:w-[190px]"
-            >
-              <Image
-                src={"/images/mohap.webp"}
-                className="object-contain"
-                fill
-                alt="udf logo"
-              />
-            </Link>
+              <Link
+                href="/"
+                className="block aspect-[100/35] mt-5 rounded-2xl overflow-hidden relative duration-300 ease-out w-[140px] lg:w-[190px]"
+              >
+                <Image
+                  src={"/images/mohap.webp"}
+                  className="object-contain"
+                  fill
+                  alt="udf logo"
+                />
+              </Link>
 
-            <Link
-              href="/"
-              className="block aspect-[100/35] mt-5 rounded-2xl overflow-hidden relative duration-300 ease-out w-[140px] lg:w-[190px]"
-            >
-              <Image
-                src={"/images/g5.png"}
-                className="object-contain brightness-0 invert"
-                fill
-                alt="G5 logo"
-              />
-            </Link>
+              <Link
+                href="/"
+                className="block aspect-[100/35] mt-5 rounded-2xl overflow-hidden relative duration-300 ease-out w-[140px] lg:w-[190px]"
+              >
+                <Image
+                  src={"/images/g5.png"}
+                  className="object-contain brightness-0 invert"
+                  fill
+                  alt="G5 logo"
+                />
+              </Link>
 
-            <Link
-              href="/"
-              className="block aspect-[100/35] mt-5 rounded-2xl overflow-hidden relative duration-300 ease-out w-[140px] lg:w-[190px]"
-            >
-              <Image
-                src={"/images/hipaa_blue.png"}
-                className="object-contain brightness-0 invert"
-                fill
-                alt="HIPAA Blue logo"
-              />
-            </Link>
-          </div>
+              <Link
+                href="/"
+                className="block aspect-[100/35] mt-5 rounded-2xl overflow-hidden relative duration-300 ease-out w-[140px] lg:w-[190px]"
+              >
+                <Image
+                  src={"/images/hipaa_blue.png"}
+                  className="object-contain brightness-0 invert"
+                  fill
+                  alt="HIPAA Blue logo"
+                />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -186,7 +186,7 @@ const socialLinks = [
     "title": "Follow us on Instagram"
   },
   {
-    "label": "facebook", 
+    "label": "facebook",
     "url": "https://www.facebook.com/profile.php?id=61565427012289",
     "title": "Follow us on Facebook"
   },
