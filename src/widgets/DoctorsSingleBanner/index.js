@@ -30,7 +30,7 @@ export default function DoctorsSingleBanner({ data }) {
                 <h1 className="mb-2.5 font-dmSerif text-[25px] font-semibold leading-[30px] text-blue-900 lg:text-[40px] lg:leading-[50px]">
                   {data?.name}
                 </h1>
-                <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: data?.description }}></div>
+                <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: data?.designation }}></div>
                 {/* {Array.isArray(data?.expertise) && data.expertise.length > 0 && (
               <div className="flex flex-wrap gap-1 md:gap-1.5 mb-4">
                 {data?.expertise?.map((item, idx) => (
