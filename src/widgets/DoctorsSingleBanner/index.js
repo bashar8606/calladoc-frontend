@@ -1,5 +1,7 @@
 "use client"
 import Image from "@/components/Image/image";
+import Link from "@/components/Link";
+import { IoHomeOutline } from "react-icons/io5";
 
 export default function DoctorsSingleBanner({ data }) {
   
@@ -27,6 +29,30 @@ export default function DoctorsSingleBanner({ data }) {
           <div>
             <div className="flex gap-10 lg:p-10 lg:pl-0 items-center text-center lg:text-start">
               <div className="flex-1 lg:p-0">
+
+              <nav className=" mb-4 flex items-center text-xs text-blue-700/80 font-medium" aria-label="Breadcrumb">
+      <ol className="inline-flex items-center ">
+        {/* Home - Always present */}
+        <li>
+          <a href="/" className="hover:underline flex items-center">
+            <IoHomeOutline className="me-1" />
+            Home
+          </a>
+        </li>
+        
+        <li  className='truncate max-w-[120px] md:max-w-[200px]'>
+              <span className="mx-0.5 text-blue-700/40">/</span>
+              <Link
+                href="/doctors" 
+                className={`hover:underline capitalize text-blue-900 font-semibold`}
+              >
+                Doctors
+              </Link>
+            </li>
+      </ol>
+    </nav>
+
+
                 <h1 className="mb-2.5 font-dmSerif text-[25px] font-semibold leading-[30px] text-blue-900 lg:text-[40px] lg:leading-[50px]">
                   {data?.name}
                 </h1>
