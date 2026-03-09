@@ -56,7 +56,18 @@ export default function DoctorsSingleBanner({ data }) {
                 <h1 className="mb-2.5 font-dmSerif text-[25px] font-semibold leading-[30px] text-blue-900 lg:text-[40px] lg:leading-[50px]">
                   {data?.name}
                 </h1>
-                <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: data?.designation }}></div>
+                <div className="prose max-w-none mb-4" dangerouslySetInnerHTML={{ __html: data?.designation }}></div>
+                <p className="text-white text-sm  leading-tight">
+            {data?.languages?.length > 0 && data?.languages?.map((item, i)=>
+            <span
+              key={i}
+              className="text-[#2463eb] py-[5px] px-[10px] rounded-full bg-[#cad8f8] bg-opacity-75 text-xs font-semibold leading-tight inline-block me-1 mb-1"
+            
+            >
+              {item.title}
+            </span>
+            )}
+          </p>
                 {/* {Array.isArray(data?.expertise) && data.expertise.length > 0 && (
               <div className="flex flex-wrap gap-1 md:gap-1.5 mb-4">
                 {data?.expertise?.map((item, idx) => (
