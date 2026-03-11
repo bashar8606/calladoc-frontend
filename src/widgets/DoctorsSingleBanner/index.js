@@ -8,10 +8,7 @@ export default function DoctorsSingleBanner({ data }) {
   return (
 
     <>
-    <section
-      id="DesignSysyemHero"
-      className="
-    lg:bg-[url('/images/heroDesktopWave.webp'),linear-gradient(108deg,#e1edfe_30%,#adbfff_100%)]
+      {/* lg:bg-[url('/images/heroDesktopWave.webp'),linear-gradient(108deg,#e1edfe_30%,#adbfff_100%)]
     bg-[size:100%_auto,100%_CALC(100%_-_1px)]
     md:bg-[size:75%_auto,100%_CALC(100%_-_1px)]
     lg:bg-[size:55%_auto,100%_CALC(100%_-_1px)]
@@ -19,14 +16,28 @@ export default function DoctorsSingleBanner({ data }) {
     lg:bg-[position:bottom_right,top_right] bg-no-repeat
     md:bg-[url('/images/HeroTablet.webp'),linear-gradient(108deg,#e1edfe_30%,#adbfff_100%)]
     bg-[url('/images/HeroMobile.png'),linear-gradient(108deg,#e1edfe_0%,#adbfff_100%)]
-    bg-[position:bottom_right,top_right]
+    bg-[position:bottom_right,top_right] */}
+    <section
+      id="DesignSysyemHero"
+      className="
   
-    lg:h-[600px]
-   relative h-auto lg:flex lg:items-center lg:justify-center p-0 md:pb-[59px]    md:pt-[130px] pt-[100px]"
+  bg-[linear-gradient(108deg,#e1edfe_30%,#adbfff_100%)]
+   relative "
     >
-      <div className=" container">
-        <div className="grid md:grid-cols-2 items-center">
-          <div>
+      <div className=" container-fluid px-0">
+        <div className="flex flex-wrap items-center sm:gap-10">
+
+        <div className="w-full sm:w-[25%]">
+            <div className="aspect w-full aspect-[4/5] max-w-[380px]   relative r overflow-hidden">
+              {data?.img?.url && (
+              <Image src={data?.img?.url} fill alt={data?.name} className="object-cover" />
+              )}
+            </div>
+          </div>
+
+
+
+          <div className="grow text-start px-6 py-6">
             <div className="flex gap-10 lg:p-10 lg:pl-0 items-center text-center lg:text-start">
               <div className="flex-1 lg:p-0">
 
@@ -81,13 +92,7 @@ export default function DoctorsSingleBanner({ data }) {
             </div>
           </div>
 
-          <div>
-            <div className="aspect w-full aspect-[4/5] max-w-[380px] mx-auto  relative rounded-3xl overflow-hidden">
-              {data?.img?.url && (
-              <Image src={data?.img?.url} fill alt={data?.name} className="object-cover" />
-              )}
-            </div>
-          </div>
+       
         </div>
       </div>
     </section>

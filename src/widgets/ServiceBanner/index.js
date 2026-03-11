@@ -29,7 +29,6 @@ md:bg-[url('/images/HeroTablet.webp'),linear-gradient(108deg,#e1edfe_30%,#adbfff
 bg-[linear-gradient(108deg,#e1edfe_0%,#adbfff_100%)]
 bg-[position:bottom_right,top_right]
 
-lg:h-[600px]
 relative h-auto lg:flex lg:items-center lg:justify-center p-0 pb-[40px] md:pb-[59px] md:pt-[50px] pt-[0px]"
       style={{ backgroundPosition: "200% 100%, 100% 0" }}
     >

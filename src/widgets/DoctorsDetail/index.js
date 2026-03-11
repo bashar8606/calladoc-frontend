@@ -103,17 +103,17 @@ console.log(data,"datadatadatadata");
         </div>
 
         {/* RIGHT CONTENT */}
-        <div className="col-span-9 space-y-20">
+        <div className="col-span-9 ">
 
           {/* Overview */}
-          <section id="overview">
+          <section id="overview" className="border-b py-6">
             <h2 className="text-2xl font-semibold mb-4">Overview</h2>
             <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: data?.description }}></div>
           </section>
 
           {sections.slice(1).map((section) => (
             section.items?.length > 0 && (
-              <section key={section.id} id={section.id}>
+              <section key={section.id} id={section.id} className="border-b py-6">
                 <h2 className="text-2xl font-semibold mb-6">
                   {section.title}
                 </h2>

@@ -96,7 +96,7 @@ export default function HomeBanner({ data }) {
       ></span>
 
       <div className="hidden md:block md:absolute top-0 right-0 w-[47%] h-[95%]  ">
-        <div className="cover overflow-hidden bg-black rounded-bl-[142px] absolute inset-0">
+        <div className="cover overflow-hidden bg-[#ECF1FF] rounded-bl-[142px] absolute inset-0">
           <Image
             src={data?.cover?.url}
             fill
