@@ -22,15 +22,24 @@ export default function DoctorsSingleBanner({ data }) {
       className="
   
   bg-[linear-gradient(108deg,#e1edfe_30%,#adbfff_100%)]
-   relative "
+   relative py-5"
     >
-      <div className=" container-fluid px-0">
+       <div className="absolute top-0 right-0 w-[50%] aspect-[1216/394]">
+        <Image
+          src="/images/shape-pattern.svg"
+          alt="Masked"
+          fill
+          className="object-cover "
+          priority
+        />
+      </div>
+      <div className=" container px-0">
         <div className="flex flex-wrap items-center sm:gap-10">
 
-        <div className="w-full sm:w-[25%]">
+        <div className="w-full sm:w-[20%]">
             <div className="aspect w-full aspect-[4/5] max-w-[380px]   relative r overflow-hidden">
               {data?.img?.url && (
-              <Image src={data?.img?.url} fill alt={data?.name} className="object-cover" />
+              <Image src={data?.img?.url} fill alt={data?.name} className="object-cover object-top" />
               )}
             </div>
           </div>
@@ -79,6 +88,17 @@ export default function DoctorsSingleBanner({ data }) {
             </span>
             )}
           </p>
+
+          <Link
+      href="https://calladoc.okadoc.com/en-ae/search/result"
+      target="_blank"
+      className={`btn btn-primary mt-5
+       text-nowrap`}
+    >
+      Book Now
+    </Link>
+
+
                 {/* {Array.isArray(data?.expertise) && data.expertise.length > 0 && (
               <div className="flex flex-wrap gap-1 md:gap-1.5 mb-4">
                 {data?.expertise?.map((item, idx) => (
