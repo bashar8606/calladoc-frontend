@@ -144,7 +144,7 @@ export default function HomeBanner({ data }) {
         <div className=" grid grid-cols-1  md:grid-cols-2 items-end">
           <div className="col-span-1 md:hidden mb-5">
             <div className=" w-full  relative ">
-              <div className="cover overflow-hidden h-[60vh] bg-black rounded-b-[60px] relative">
+              <div className="cover overflow-hidden h-[60vh] bg-[#ECF1FF] rounded-b-[60px] relative">
                 <Image
                   src={data?.cover?.url}
                   fill

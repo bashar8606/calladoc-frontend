@@ -47,7 +47,7 @@ export default function DoctorsSingleBanner({ data }) {
 
 
           <div className="grow text-start px-6 py-6">
-            <div className="flex gap-10 lg:p-10 lg:pl-0 items-center text-center lg:text-start">
+            <div className="flex gap-10 lg:p-10 lg:pl-0 items-center  lg:text-start">
               <div className="flex-1 lg:p-0">
 
               <nav className=" mb-4 flex items-center text-xs text-blue-700/80 font-medium" aria-label="Breadcrumb">
